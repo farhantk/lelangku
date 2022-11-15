@@ -56,7 +56,7 @@ module.exports={
             const user = await User.findOne({
                 email: email
             })
-            if(admin) {
+            if(user) {
                 const checkPass = await bcrypt.compare(password, user.password)
                 if(checkPass){
                     req.session.user = {

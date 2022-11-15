@@ -8,6 +8,9 @@ const multer = require('multer')
 const methodOverride = require('method-override')
 const session = require('express-session')
 const cors = require('cors')
+const redis = require('redis')
+let RedisStore = require('connect-redis')(session)
+let redisClient = redis.createClient()
 // USERS
 var authRouter = require('./app/auth/router');
 var landingPageRouter = require('./app/landingpage/router');
@@ -23,6 +26,11 @@ var bankRouter = require('./app/bank/router');
 
 var app = express();
 app.use(cors())
+app.use(session({
+  secret:'wtsrtsgt1234@3#22',
+
+  })
+)
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -43,11 +51,14 @@ const fileFilter = (req, file, cb)=>{
     cb(null, false);
   }
 }
+redisClient.on('error', (err) => console.log(`Fail to connect with redis. ${err}`));
+redisClient.on('connect', () => console.log('Successful to connect with redis'));
+
 app.use(session({
+  store: new RedisStore({ client: redisClient }),
   secret: 'keyboard cat',
   resave: false,
-  saveUninitialized: true,
-  cookie: { }
+  saveUninitialized: false,
 }))
 app.use(bodyParser.json());
 app.use(multer({storage: fileStorage, fileFilter: fileFilter}).single('image'))
@@ -59,17 +70,18 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/adminlte', express.static(path.join(__dirname, '/node_modules/admin-lte/')));
 
+// ADMIN
+app.use('/admin', adminRouter);
+app.use('/admin/dashboard', adminDashboardRouter);
+app.use('/admin/category', categoryRouter);
+app.use('/admin/expedition', expeditionRouter);
+app.use('/admin/bank', bankRouter);
 //API
 app.use('/', authRouter);
 app.use('/', landingPageRouter);
 app.use('/user', userRouter);
 app.use('/api/item', itemRouter)
-// ADMIN
-app.use('/admin/', adminRouter);
-app.use('/admin/dashboard', adminDashboardRouter);
-app.use('/admin/category', categoryRouter);
-app.use('/admin/expedition', expeditionRouter);
-app.use('/admin/bank', bankRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
