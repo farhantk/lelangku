@@ -15,8 +15,8 @@ module.exports={
     view_signIn: async(req, res)=>{
         try {
             if (req.session.user === null || req.session.user === undefined) {
-                res.render('client/singin/index',{
-                    title: "Admin | LelangKu"
+                res.render('client/signin/index',{
+                    title: "Sign In | LelangKu"
                 })
               } else {
                 res.redirect('/')
@@ -64,10 +64,10 @@ module.exports={
                         email: user.email,
                         username: user.username
                     }
-                    console.log(req.session.admin)
+                    console.log(req.session.user)
                     res.redirect('/')
                 }else{
-                    res.redirect('/singnin')
+                    res.redirect('/signin')
                 }
             }else{
                 res.redirect('/signin')
