@@ -14,11 +14,16 @@ module.exports={
     },
     view_signIn: async(req, res)=>{
         try {
-            res.render('client/signin/index',{
-                title: "Masuk | LelangKu"
-            })
+            if (req.session.user === null || req.session.user === undefined) {
+                res.render('client/singin/index',{
+                    title: "Admin | LelangKu"
+                })
+              } else {
+                res.redirect('/')
+              }
         } catch (err) {
             console.log(err)
+            res.redirect('/signin')
         }
     },
     register: async(req,res,next)=>{
@@ -45,40 +50,31 @@ module.exports={
             next(err)
         }
     },
-    signIn: (req, res, next)=>{
-        const {email, password} = req.body
-        User.findOne({email:email}).then((user)=>{
-            if(user){
-                const checkPass = bcrypt.compareSync(password, user.password)
+    signIn: async(req, res, next)=>{
+        try {
+            const {email, password} = req.body
+            const user = await User.findOne({
+                email: email
+            })
+            if(admin) {
+                const checkPass = await bcrypt.compare(password, user.password)
                 if(checkPass){
-                    const token = jwt.sign({
-                        user:{
-                            id:user.id,
-                            username:user.username,
-                            email:user.email,
-                            nama:user.nama,
-                            phoneNumber:user.phoneNumber,
-
-                        }
-                    }, config.jwtKey)
-                    res.status(200).json({
-                        data: {token}
-                    })
+                    req.session.user = {
+                        id: user._id,
+                        email: user.email,
+                        username: user.username
+                    }
+                    console.log(req.session.admin)
+                    res.redirect('/')
                 }else{
-                    res.status(403).json({
-                        message: 'Password anda salah'
-                    })
+                    res.redirect('/singnin')
                 }
             }else{
-                res.status(403).json({
-                    message: 'Email anda belum terdaftar'
-                })
+                res.redirect('/signin')
             }
-        }).catch((err)=>{
-            res.status(500).json({
-                message: err.message || 'server error'
-            })
-            next()
-        })
+        } catch (error) {
+            console.log(error)
+            res.redirect('/signin')
+        }
     }
 }

@@ -10,6 +10,7 @@ const session = require('express-session')
 const cors = require('cors')
 // USERS
 var authRouter = require('./app/auth/router');
+var landingPageRouter = require('./app/landingpage/router');
 var userRouter = require('./app/user/router');
 var itemRouter = require('./app/item/router');
 
@@ -60,6 +61,7 @@ app.use('/adminlte', express.static(path.join(__dirname, '/node_modules/admin-lt
 
 //API
 app.use('/', authRouter);
+app.use('/', landingPageRouter);
 app.use('/user', userRouter);
 app.use('/api/item', itemRouter)
 // ADMIN
