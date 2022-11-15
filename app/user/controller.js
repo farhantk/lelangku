@@ -5,7 +5,7 @@ const config = require('../../config')
 const multer = require('multer')
 const os = require('os')
 module.exports={
-    index: async(req, res)=>{
+    view_editProfile: async(req, res)=>{
         try {
             res.status(200).json({
                 data: req.user
