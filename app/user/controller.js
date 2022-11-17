@@ -6,7 +6,8 @@ const multer = require('multer')
 const os = require('os')
 module.exports={
     index: async(req, res)=>{
-        User.find({}, (err, result) => {
+        console.log(req.session.user.id)
+        User.findOne({id: req.session.id}, (err, result) => {
             try {
                 res.json(result);
             } catch (err) {
@@ -17,36 +18,29 @@ module.exports={
     editProfile: async(req, res, next)=>{
         try {
             const {name="", phoneNumber="" } =  req.body
-
+            console.log(req.session._id)
             const payload = {}
             if(name.length) payload.name = name
             if(phoneNumber.length) payload.phoneNumber = phoneNumber
 
             if(req.file){
+                console.log(payload)
                 const image = req.file.path
-                const user =  await User.findOneAndUpdate({
-                    _id: req.user._id
+                User.findOneAndUpdate({
+                    _id: req.session.user.id
                 }, {payload,
-                     image:image}, {new:true, runValidators:true})
-                console.log(image)
+                     image:image})
                 res.status(201).json({
-                    data: {
-                        id: user.id,
-                        image: image,
-                        name: user.name,
-                        phoneNumber: user.phoneNumber
-                    }
+                    data: result
                 })
             }else{
-                const user =  await User.findOneAndUpdate({
-                    _id: req.user._id
-                }, payload, {new:true, runValidators:true})
-                res.status(201).json({
-                    data: {
-                        id: user.id,
-                        name: user.name,
-                        phoneNumber: user.phoneNumber
-                    }
+                console.log(req.session._id)
+                await User.findOneAndUpdate({
+                    _id: req.session.user.id
+                }, payload,{new: true},(err, result)=>{
+                    res.status(201).json({
+                        data: result
+                    })
                 })
             }
         } catch (err) {
