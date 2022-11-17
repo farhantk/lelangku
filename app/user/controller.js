@@ -6,15 +6,13 @@ const multer = require('multer')
 const os = require('os')
 module.exports={
     index: async(req, res)=>{
-        try {
-            res.status(200).json({
-                data: req.user
-            })
-        } catch (err) {
-            res.status(500).json({
-                message: err.message
-            })
-        }
+        User.find({}, (err, result) => {
+            try {
+                res.json(result);
+            } catch (err) {
+                console.log(err)
+            }
+        });
     },
     editProfile: async(req, res, next)=>{
         try {
