@@ -7,7 +7,7 @@ const os = require('os')
 module.exports={
     index: async(req, res)=>{
         console.log(req.session.user.id)
-        User.findOne({id: req.session.id}, (err, result) => {
+        User.findOne({_id: req.session.user.id}, (err, result) => {
             try {
                 res.json(result);
             } catch (err) {
@@ -18,7 +18,7 @@ module.exports={
     editProfile: async(req, res, next)=>{
         try {
             const {name="", phoneNumber="" } =  req.body
-            console.log(req.session._id)
+            console.log(req.session.user.id)
             const payload = {}
             if(name.length) payload.name = name
             if(phoneNumber.length) payload.phoneNumber = phoneNumber
@@ -34,7 +34,7 @@ module.exports={
                     data: result
                 })
             }else{
-                console.log(req.session._id)
+                console.log(req.session.user.id)
                 await User.findOneAndUpdate({
                     _id: req.session.user.id
                 }, payload,{new: true},(err, result)=>{
