@@ -6,10 +6,20 @@ const multer = require('multer')
 const os = require('os')
 module.exports={
     index: async(req, res)=>{
-        console.log(req.session.user.id)
         User.findOne({_id: req.session.user.id}, (err, result) => {
             try {
-                res.json(result);
+                res.render('client/UserProfile/index', {
+                    name : result.name,
+                    email: result.email,
+                    phoneNumber: result.phoneNumber,
+                    province: result.province,
+                    city: result.city,
+                    district: result.district,
+                    ward: result.ward,
+                    postalCode: result.postalCode,
+                    fullAddr: result.fullAddr,
+
+                })
             } catch (err) {
                 console.log(err)
             }
@@ -17,11 +27,24 @@ module.exports={
     },
     editProfile: async(req, res, next)=>{
         try {
-            const {name="", phoneNumber="" } =  req.body
-            console.log(req.session.user.id)
+            const {
+                name="",
+                phoneNumber="",
+                province= "",
+                city= "",
+                district= "",
+                ward= "",
+                postalCode= "",
+                fullAddr= "",
+            } =  req.body
             const payload = {}
             if(name.length) payload.name = name
-            if(phoneNumber.length) payload.phoneNumber = phoneNumber
+            if(province.length) payload.province = province
+            if(city.length) payload.city = city
+            if(district.length) payload.district = district
+            if(ward.length) payload.ward = ward
+            if(postalCode.length) payload.postalCode = postalCode
+            if(fullAddr.length) payload.fullAddr = fullAddr
 
             if(req.file){
                 console.log(payload)
@@ -43,6 +66,7 @@ module.exports={
                     })
                 })
             }
+            
         } catch (err) {
             
         }
