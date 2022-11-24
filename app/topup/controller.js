@@ -14,12 +14,20 @@ module.exports={
         });
     },
     topup: async(req, res)=>{
-        var data =  req.body
+        var addbalance =  req.body
         //const temp = parseInt(Object.values(addbalance))
-        console.log(data.addbalance)
+        const temp = parseInt(addbalance.balance)
         User.findOneAndUpdate({
             _id: req.session.user.id
-        }, {$inc:{balance:temp}})
+        }, {$inc:{balance:temp}}, (err, result)=>{
+            try {
+                res.status(200).json({
+                    data:result
+                })
+            } catch (error) {
+                console.log(error)
+            }
+        })
         
     }
 }
