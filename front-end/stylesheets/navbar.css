@@ -1,0 +1,257 @@
+.header {
+  padding: 8px 32px;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 4px 6px -1px;
+}
+
+.header .img-lelangku {
+  width: 150px;
+  padding: 0px 5px;
+}
+
+.header .text-kategori {
+  padding: 2px 5px;
+  font-size: 14px;
+}
+
+.header .text-kategori:hover {
+  background-color: #f3f4f5 !important;
+  cursor: pointer !important;
+  color: #004aad;
+  border-radius: 5px;
+}
+
+.text-kategori:hover + kategory {
+  display: block;
+}
+
+.header span {
+  color: #929292;
+}
+
+.header .wrap-search {
+  position: relative;
+  background-color: #fff;
+  width: 100%;
+  height: 35px;
+}
+
+.header .wrap-search .form-control {
+  background-color: transparent;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid #cdcdcd;
+  z-index: 1;
+  justify-content: center;
+}
+
+.header .wrap-search .form-control::placeholder {
+  color: #cdcdcd;
+  font-size: 14px;
+}
+
+.header .wrap-search .form-control:focus {
+  box-shadow: none;
+  border: 1px solid #004aad;
+}
+
+.header .wrap-icons {
+  position: relative;
+  background-color: transparent;
+  margin-left: 20px;
+  font-size: 22px;
+}
+
+.header .wrap-icons a {
+  color: #929292;
+  text-decoration: none;
+}
+
+.header .wrap-icons a:hover {
+  color: #004aad;
+  transition: all 0.2s linear;
+}
+
+.header .wrap-icons span {
+  text-decoration: none;
+}
+
+.header .wrap-icons span:hover {
+  color: #004aad;
+  transition: all 0.2s linear;
+}
+
+.header .wrap-icons div {
+  text-decoration: none;
+  color: #929292;
+  padding: 8px;
+}
+
+.header .wrap-icons div:hover {
+  color: #004aad;
+  transition: all 0.2s linear;
+}
+
+.header .text-masuk {
+  font-size: 14px;
+}
+
+.line {
+  font-size: 26px;
+  color: #cdcdcd;
+  margin-bottom: 4px;
+  font-weight: 400;
+  margin-right: 20px;
+}
+
+.navbar-brand {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.container-fluid {
+  align-items: start;
+  justify-content: space-around;
+}
+
+.kategory {
+  display: flex;
+  flex-direction: column;
+  display: none;
+}
+
+.head-kategory {
+  width: 100%;
+  overflow-x: scroll;
+  position: fixed;
+  top: 110px;
+  z-index: 99999;
+  border-top: 1px solid #cdcdcd;
+  background-color: #ffffff;
+}
+
+.head-kategory span {
+  padding: 10px 30px;
+  border-bottom: 2px solid transparent;
+  color: #969696;
+}
+
+.head-kategory span:hover {
+  padding: 10px 30px;
+  border-bottom: 2px solid #03ac0e;
+  color: #03ac0e;
+  cursor: pointer;
+}
+
+.head-left {
+  overflow-y: scroll;
+  height: 100vh;
+  padding-top: 185px;
+  padding-left: 35px;
+}
+
+.head-left h6 {
+  font-size: 12px;
+  padding: 10px 0 10px 10px;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.head-left h6:hover {
+  background-color: gainsboro;
+  cursor: pointer;
+}
+
+.kategoryStyle {
+  display: block;
+}
+
+.sub-menu-wrap {
+  position: absolute;
+  top: 100%;
+  right: 1%;
+  width: 250px;
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height 0.5s;
+}
+
+.sub-menu-wrap.open-menu {
+  max-height: 400px;
+}
+
+.sub-menu {
+  background: #fff;
+  padding: 20px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.info-saldo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #525252;
+  margin: 12px 0;
+}
+
+.info-saldo h5 {
+  text-align: left;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.user-info h3 {
+  font-weight: 600;
+}
+
+.user-info img {
+  width: 60px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.sub-menu hr {
+  border: 0;
+  height: 1px;
+  width: 100%;
+  background: #000;
+  margin: 15px 0 10px;
+}
+
+.sub-menu-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #525252;
+  margin: 12px 0;
+}
+
+.sub-menu-link p {
+  width: 100%;
+}
+.sub-menu-link i {
+  width: 40px;
+  padding: 8px;
+  margin-right: 15px;
+  font-size: 14px;
+}
+
+.sub-menu-link span {
+  font-size: 22px;
+  transition: transform 0.5s;
+}
+
+.sub-menu-link:hover span {
+  transform: translateX(5px);
+}
+
+.sub-menu-link:hover p {
+  font-weight: 600;
+}
