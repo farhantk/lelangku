@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Profile Saya</title>
+
+  <!--Logo bar Lelangku-->
+  <link rel="icon" href="images/Lelangku_logo.png" type="image/x-icon">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
+  <link rel="stylesheet" href="stylesheets/userProfile.css" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+</head>
+
+<body>
+  <%- include ../../partials/client/navbar.ejs %>
+
+  <!--tes
+    <div>
+      <input type="text">name
+    -->
+
+  </div>
+
+  <!--profile-->
+  <section id="profile">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2 style="font-family: 'Inter', sans-serif; font-weight:700">Ubah Profil Saya</h2>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4 text-center">
+            <div class="card-propict">
+              <div class="circle-icon position position-relative mx-auto">
+                <img src=<%= image %> alt="" class="position-absolute top-50 start-50 translate-middle">
+              </div>
+              <button type="button" class="btn btn-outline-primary">Pilih Foto</button>
+              <p class="mt-3">Besar maksimal gambar 5 Mb</p>
+            </div>
+          </div>
+          
+          <div class="col-md-4">
+            <div class="card-textbox">
+              <form action="/user?_method=PUT" method="post">
+                <form class="row g-3">
+                  <div class="mb-3 row">
+                    <label for="inputNama" class="col-sm-2 col-form-label">Nama</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="inputNama" name="name" value=<%= name %> >
+                    </div>
+                  </div>
+      
+                  <div class="mb-3 row">
+                    <label for="inputNama" class="col-sm-2 col-form-label">Tanggal Lahir</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="inputNama">
+                    </div>
+                  </div>
+      
+                  <div class="mb-3 row">
+                    <label for="inputNama" class="col-sm-2 col-form-label">Jenis Kelamin</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="inputNama"><br>
+                    </div>
+                  </div>
+      
+                  <div class="mb-3 row">
+                    <label for="inputNama" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-8">
+                      <input type="text" readonly class="form-control-plaintext" id="inputNama" value=<%= email %> >
+                    </div>
+                  </div>
+      
+                  <div class="mb-3 row">
+                    <label for="inputNama" class="col-sm-2 col-form-label">Nomor HP</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="inputNama" name="phoneNumber" value=<%= phoneNumber %>><br>
+                    </div>
+                  </div>
+      
+                  <div class="col-md-6">
+                    <label for="inputAddress" class="form-label" \t>Alamat</label>
+                  </div>
+      
+                  <div class="mb-3 row">
+                    <label for="inputNama" class="col-sm-2 col-form-label">Provinsi</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="inputNama" name="province" value=<%= province %>>
+                    </div>
+                  </div>
+      
+                  <div class="mb-3 row">
+                    <label for="inputNama" class="col-sm-2 col-form-label">Kota</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="inputNama" name="city" value=<%= city %>>
+                    </div>
+                  </div>
+      
+                  <div class="mb-3 row">
+                    <label for="inputNama" class="col-sm-2 col-form-label">Kecamatan</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="inputNama" name="district" value=<%= district %>>
+                    </div>
+                  </div>
+      
+                  <div class="mb-3 row">
+                    <label for="inputNama" class="col-sm-2 col-form-label">Kelurahan</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="inputNama" name="ward" value=<%= ward %>>
+                    </div>
+                  </div>
+      
+                  <div class="mb-3 row">
+                    <label for="inputNama" class="col-sm-2 col-form-label">Alamat Lengkap</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="inputNama" name="fullAddr" value=<%= fullAddr %>>
+                    </div>
+                  </div>
+      
+                  <div class="mb-3 row">
+                    <label for="inputNama" class="col-sm-2 col-form-label">Kode pos</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="inputNama" name="postalCode" value=<%= postalCode %>>
+                    </div>
+                  </div>
+      
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                  </div>
+                </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  <%- include ../../partials/client/footer.ejs %>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"></script>
+</body>
+
+</html>

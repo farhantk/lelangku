@@ -1,19 +1,8 @@
 const User = require('../user/model')
 const bcrypt = require('bcryptjs')
-
+const config = require('../../config')
+const jwt = require('jsonwebtoken')
 module.exports={
-    index: async(req, res)=>{
-        try {
-            res.render('client/landingpage/index')
-            res.status(200).json({
-                data: req.user
-            })
-        } catch (err) {
-            res.status(500).json({
-                message: err.message
-            })
-        }
-    },
     view_register: async(req, res)=>{
         try {
             res.render('client/signup/index',{
@@ -27,11 +16,11 @@ module.exports={
         try {
             if (req.session.user === null || req.session.user === undefined) {
                 res.render('client/signin/index',{
-                    title: "Admin | LelangKu"
+                    title: "Sign In | LelangKu"
                 })
-            } else {
+              } else {
                 res.redirect('/')
-            }
+              }
         } catch (err) {
             console.log(err)
             res.redirect('/signin')

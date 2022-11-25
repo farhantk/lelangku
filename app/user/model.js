@@ -24,6 +24,11 @@ let userSchema = mongoose.Schema({
     require: [true, 'kata sandi harus diisi'],
     maxlength :[225, "panjang password maksimal 225 karakter"],
   },
+  gender: {
+    type: String,
+    enum: ['Laki-laki', 'Perempuan'],
+    default: ''
+  },
   balance: {
     type: Number,
     default: 0
@@ -45,25 +50,35 @@ let userSchema = mongoose.Schema({
     maxlength :[13, "panjang nomor telpon harus antara 9 - 13 karakter"],
     minlength :[9, "panjang nomor telpon harus antara 9 - 13 karakter"]
   },
-  state: {
-    type: String,
-    require: [true, 'negara harus diisi']
-  },
   province: {
       type: String,
       require: [true, 'Provinsi harus diisi'],
+      default: ''
   },
   city: {
       type: String,
       require: [true, 'Kota harus diisi'],
+      default: ''
+  },
+  district: {
+      type: String,
+      require: [true, 'Kecamatan harus diisi'],
+      default: ''
+  },
+  ward: {
+      type: String,
+      require: [true, 'Kelurahan harus diisi'],
+      default: ''
   },
   postalCode: {
       type: String,
       require: [true, 'Kode pos harus diisi'],
+      default: ''
   },
   fullAddr: {
       type: String,
       require: [true, 'Alamat lengkap harus diisi'],
+      default: ''
   },
 
 }, { timestamps: true })
