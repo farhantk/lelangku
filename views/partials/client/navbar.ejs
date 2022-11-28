@@ -1,28 +1,192 @@
-<div class="header">
-    <div class="div-navbar d-flex flex-column">
+<div class="header fixed-top">
+  <nav class="div-navbar d-flex flex-column">
+    <div class="d-flex justify-content-between align-items-center">
+      <img class="img-lelangku" src="images/Lelangku 2.png" alt="" />
+      <span class="mx-2 text-kategori" onclick="kategoryOn()">Kategori</span>
+      <div class="wrap-search">
+        <input type="text" class="form-control" placeholder="Cari barang.." />
+      </div>
+      <div class="wrap-icons d-flex flex-row align-items-center">
+        <div class="cart">
+          <a href="#" class="bx bxs-cart-alt"></a>
+        </div>
+        <div class="text-toko fs-6">
+          <a href="#"><span class="">Toko</span></a>
+        </div>
+      </div>
+
+      <span class="mx-3 line">|</span>
+
       <div class="d-flex justify-content-between align-items-center">
-        <img class="img-lelangku" src="images/Lelangku 2.png" alt="" />
-        <span class="mx-2 text-kategori">Kategori</span>
-        <div class="wrap-search">
-          <input type="text" class="form-control" placeholder="Cari barang.." />
+        <span class="text-masuk">Hasbulla</span>
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img
+              src="images/profile icon.png "
+              alt=""
+              class="d-flex justify-content-between align-items-center"
+              onclick="toggleMenu()"
+            />
+          </a>
         </div>
-        <div class="wrap-icons">
-          <div class="bx bxs-cart-alt"></div>
-          <div class="bx bxs-bell"></div>
-          <div class="bx bxs-envelope"></div>
+      </div>
+
+      <div class="sub-menu-wrap" id="subMenu">
+        <div class="sub-menu">
+          <div class="user-info">
+            <img src="images/profile icon.png" alt="" width="60" height="60" />
+            <h4>Hasbulla</h4>
+          </div>
+          <hr />
+
+          <a class="info-saldo">
+            <h5>Saldo : Rp50.000</h5>
+          </a>
+          <a href="#" class="sub-menu-link">
+            <i class="bx bxs-user"></i>
+            <p>Edit Profile</p>
+            <span>></span>
+          </a>
+
+          <a href="#" class="sub-menu-link">
+            <i class="bx bxs-wallet"></i>
+            <p>Tambah Saldo</p>
+            <span>></span>
+          </a>
+
+          <a href="#" class="sub-menu-link">
+            <i class="bx bxs-cog"></i>
+            <p>Setting</p>
+            <span>></span>
+          </a>
+
+          <a href="#" class="sub-menu-link">
+            <i class="bx bxs-log-out"></i>
+            <p>Logout</p>
+            <span>></span>
+          </a>
         </div>
+      </div>
+    </div>
+  </nav>
+</div>
 
-        <span class="mr-3 line">|</span>
-
-        <div class="d-flex justify-content-between align-items-center">
-          <span class="text-masuk">Hasbulla</span>
-          <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-              <img src="/1667652875628-KTM.jpg" alt="" width="36" height="36"
-                class="d-flex justify-content-between align-items-center" />
-            </a>
+<div class="kategory" id="kategory">
+  <div class="row">
+    <div class="col-2">
+      <div class="head-left">
+        <h6 class="mb-0">Buku</h6>
+        <h6 class="mb-0">Elektronik</h6>
+        <h6 class="mb-0">Dapur</h6>
+        <h6 class="mb-0">Elektronik</h6>
+        <h6 class="mb-0">Elektronik</h6>
+        <h6 class="mb-0">Elektronik</h6>
+        <h6 class="mb-0">Elektronik</h6>
+        <h6 class="mb-0">Elektronik</h6>
+        <h6 class="mb-0">Elektronik</h6>
+        <h6 class="mb-0">Elektronik</h6>
+        <h6 class="mb-0">Elektronik</h6>
+        <h6 class="mb-0">Elektronik</h6>
+        <h6 class="mb-0">Elektronik</h6>
+        <h6 class="mb-0">Elektronik</h6>
+        <h6 class="mb-0">Elektronik</h6>
+        <h6 class="mb-0">Elektronik</h6>
+        <h6 class="mb-0">Elektronik</h6>
+        <h6 class="mb-0">Elektronik</h6>
+        <h6 class="mb-0">Elektronik</h6>
+        <h6 class="mb-0">Elektronik</h6>
+        <h6 class="mb-0">Elektronik</h6>
+        <h6 class="mb-0">Elektronik</h6>
+        <h6 class="mb-0">Elektronik</h6>
+        <h6 class="mb-0">Elektronik</h6>
+        <h6 class="mb-0">Elektronik</h6>
+        <h6 class="mb-0">Elektronik</h6>
+        <h6 class="mb-0">Elektronik</h6>
+      </div>
+    </div>
+    <div class="col-10">
+      <div class="head-left">
+        <div class="w-100 d-flex align-items-center">
+          <img src="images/6.png" alt="" />
+          <span class="h4 m-0 p-0 font-weight-bold">Buku</span>
+        </div>
+        <div class="row mt-5">
+          <div class="col-3">
+            <h5>Title</h5>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
+          </div>
+          <div class="col-3">
+            <h5>Title</h5>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
+          </div>
+          <div class="col-3">
+            <h5>Title</h5>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
+          </div>
+          <div class="col-3">
+            <h5>Title</h5>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col-3">
+            <h5>Title</h5>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
+          </div>
+          <div class="col-3">
+            <h5>Title</h5>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
+          </div>
+          <div class="col-3">
+            <h5>Title</h5>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
+          </div>
+          <div class="col-3">
+            <h5>Title</h5>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
+            <h6>Deskripsi</h6>
           </div>
         </div>
       </div>
     </div>
+  </div>
 </div>

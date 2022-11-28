@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const {  view_register,view_signIn,register, signIn } = require('./controller')
+const {  index, view_register,view_signIn,register, signIn } = require('./controller')
 
 /* GET home page. */
 router.get('/signin', view_signIn);
