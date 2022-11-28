@@ -1,0 +1,75 @@
+<%- include ../../stylesheets/navbar.css %>
+<div class="header fixed-top">
+  <nav class="div-navbar d-flex flex-column">
+    <div class="d-flex justify-content-between align-items-center">
+      <img class="img-lelangku" src="asset/img/Lelangku 2.png" alt="" />
+      <span class="mx-2 text-kategori" onclick="kategoryOn()">Kategori</span>
+      <div class="wrap-search">
+        <input type="text" class="form-control" placeholder="Cari barang.." />
+      </div>
+      <div class="wrap-icons d-flex flex-row align-items-center">
+        <div class="cart">
+          <a href="#" class="bx bxs-cart-alt"></a>
+        </div>
+        <div class="text-toko fs-6">
+          <a href="#"><span class="">Toko</span></a>
+        </div>
+      </div>
+
+      <span class="mx-3 line">|</span>
+
+      <div class="d-flex justify-content-between align-items-center">
+        <span class="text-masuk">Hasbulla</span>
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img
+              src="asset/img/profile icon.png"
+              alt=""
+              width="40"
+              height="40 "
+              class="d-flex justify-content-between align-items-center"
+              onclick="toggleMenu()"
+            />
+          </a>
+        </div>
+      </div>
+
+      <div class="sub-menu-wrap" id="subMenu">
+        <div class="sub-menu">
+          <div class="user-info">
+            <img src="asset/img/profile icon.png" alt="" />
+            <h4>Hasbulla</h4>
+          </div>
+          <hr />
+
+          <a class="info-saldo">
+            <h5>Saldo : Rp50.000</h5>
+          </a>
+          <a href="#" class="sub-menu-link">
+            <i class="bx bxs-user"></i>
+            <p>Edit Profile</p>
+            <span>></span>
+          </a>
+
+          <a href="#" class="sub-menu-link">
+            <i class="bx bxs-wallet"></i>
+            <p>Tambah Saldo</p>
+            <span>></span>
+          </a>
+
+          <a href="#" class="sub-menu-link">
+            <i class="bx bxs-cog"></i>
+            <p>Setting</p>
+            <span>></span>
+          </a>
+
+          <a href="#" class="sub-menu-link">
+            <i class="bx bxs-log-out"></i>
+            <p>Logout</p>
+            <span>></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
