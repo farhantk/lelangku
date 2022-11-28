@@ -563,3 +563,31 @@ footer {
   bottom: 0;
   right: 0;
 }
+
+/* Bagian Top Up */
+.container-topup{
+  position: relative;
+  top: 100px;
+  padding: 30px;
+  width: 1000px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0px 7px rgba(0, 0, 0, 0.20);
+}
+
+.container-topup h2{
+  margin: 0px;
+  padding: 30px;
+  box-sizing: border-box;
+  font-family: 'inter-Bold', sans-serif;
+}
+
+.container-topup_footer
+{
+  padding: 30px;
+  width: 1000px;
+  height: fit-content;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0px 2px rgba(0, 0, 0, 0.20);
+}
