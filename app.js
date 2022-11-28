@@ -16,6 +16,7 @@ var authRouter = require('./app/auth/router');
 var landingPageRouter = require('./app/landingpage/router');
 var userRouter = require('./app/user/router');
 var itemRouter = require('./app/item/router');
+var topupRouter = require('./app/topup/router');
 
 // ADMIN
 var adminRouter = require('./app/admin/router');
@@ -80,6 +81,7 @@ app.use('/admin/bank', bankRouter);
 app.use('/', authRouter);
 app.use('/', landingPageRouter);
 app.use('/user', userRouter);
+app.use('/user/topup', topupRouter);
 app.use('/api/item', itemRouter)
 
 

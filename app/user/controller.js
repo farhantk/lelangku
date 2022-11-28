@@ -18,6 +18,7 @@ module.exports={
                     ward: result.ward,
                     postalCode: result.postalCode,
                     fullAddr: result.fullAddr,
+                    image: result.image,
 
                 })
             } catch (err) {
@@ -39,6 +40,7 @@ module.exports={
             } =  req.body
             const payload = {}
             if(name.length) payload.name = name
+            if(phoneNumber.length) payload.phoneNumber = phoneNumber
             if(province.length) payload.province = province
             if(city.length) payload.city = city
             if(district.length) payload.district = district
@@ -60,15 +62,11 @@ module.exports={
                 console.log(req.session.user.id)
                 await User.findOneAndUpdate({
                     _id: req.session.user.id
-                }, payload,{new: true},(err, result)=>{
-                    res.status(201).json({
-                        data: result
-                    })
-                })
+                }, payload,{new: true})
             }
             
         } catch (err) {
-            
+            res.redirect('/user')
         }
     }
 }
