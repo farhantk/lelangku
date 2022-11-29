@@ -33,10 +33,10 @@ let userSchema = mongoose.Schema({
     type: Number,
     default: 0
   },
-  role: {
+  store: {
     type: String,
-    enum: ['admin', 'user'],
-    default: 'user'
+    enum: ['Y', 'N'],
+    default: 'N'
   },
   status: {
     type: String,

@@ -30,7 +30,7 @@ module.exports={
                     data:result
                 })
             } catch (error) {
-                res.redirect('/')
+                console.log(error)
             }
         })
         
