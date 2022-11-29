@@ -30,12 +30,12 @@
 
 		<div class="row">
 			<!-- KOLOM 1 -->
-			<div class="col-md-7">
-				<form>
+			<form action="/user/topup?_method=PUT" method="POST">
+				<div class="col-md-7">
 					<h4 class="text-judul">Mau top-up berapa?</h4>
 
 					<label class="w-100 mb-3">
-						<input type="text" class="form-control">
+						<input type="number" name="addbalance" class="form-control">
 					</label>
 
                     <div class="pilihan1">
@@ -84,18 +84,10 @@
 						<img src="assets/images/bayar-3.png">
 					</label>
 
-				</form>
-			</div>
-
-
-
-
-
-
-
-
-			<!-- KOLOM 2 -->
-			<div class="col-md-4 offset-md-1">
+				</div>
+				
+				<!-- KOLOM 2 -->
+				<div class="col-md-4 offset-md-1">
 				<div class="card sticky-top">
 				  <div class="card-header bg-white">
 				    <h3 class="text-judul">Detail Top Up</h3>
@@ -106,23 +98,24 @@
 				    	<div class="col-md">IDR 50.000</div>
 				    </div>
 				    <div class="row mt-2 mb-2">
-				    	<div class="col-md"><small>Biaya Admin</small></div>
+						<div class="col-md"><small>Biaya Admin</small></div>
 				    	<div class="col-md">IDR 2.000</div>
 				    </div>
 				    <div class="row mt-2 mb-2">
 				    	<div class="col-md"><small>Total</small></div>
 				    	<div class="col-md">IDR 52.000</div>
 				    </div>
-				  </div>
+				   </div>
+				</div>
 				  <div class="card-footer">
-				    <button type="button" class="btn btn-primary w-100">Bayar</button>
+				    <button type="submit" class="btn btn-primary w-100">Bayar</button>
 				  </div>
 				</div>
-			</div>
+			</form>
 		</div>
 		
 
-	
+		
 		
 
 
