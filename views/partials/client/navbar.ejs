@@ -24,7 +24,7 @@
       <span class="mx-3 line">|</span>
 
       <div class="d-flex justify-content-between align-items-center">
-        <span class="text-masuk">Hasbulla</span>
+        <span class="text-masuk"><%= name %></span>
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
             <img
@@ -46,20 +46,20 @@
               width="60"
               height="60"
               />
-            <h4>Hasbulla</h4>
+            <h4><%= name %></h4>
           </div>
           <hr>
           
           <a class="info-saldo">
-            <h5>Saldo : Rp50.000</h5>
+            <h5>Saldo : Rp <%= balance %> </h5>
           </a>
-          <a href="#" class="sub-menu-link">
+          <a href="/user" class="sub-menu-link">
             <i class='bx bxs-user' ></i>
             <p>Edit Profile</p>
             <span>></span>
           </a>
 
-          <a href="#" class="sub-menu-link">
+          <a href="/user/topup" class="sub-menu-link">
             <i class='bx bxs-wallet' ></i>
             <p>Tambah Saldo</p>
             <span>></span>
@@ -71,7 +71,7 @@
             <span>></span>
           </a>
 
-          <a href="#" class="sub-menu-link">
+          <a href="/signout" class="sub-menu-link">
             <i class='bx bxs-log-out' ></i>
             <p>Logout</p>
             <span>></span>

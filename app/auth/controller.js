@@ -76,5 +76,9 @@ module.exports={
             console.log(error)
             res.redirect('/signin')
         }
+    },
+    actionSignOut: async(req, res)=>{
+        req.session.destroy()
+        res.redirect('/')
     }
 }
