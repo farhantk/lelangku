@@ -39,7 +39,7 @@ app.set('view engine', 'ejs');
 
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb)=>{
-    cb(null, 'public')
+    cb(null, './public')
   },
   filename: (req, file, cb)=>{
     cb(null, new Date().getTime() + '-'+file.originalname)
