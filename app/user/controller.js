@@ -19,7 +19,6 @@ module.exports={
                     postalCode: result.postalCode,
                     fullAddr: result.fullAddr,
                     image: result.image,
-
                 })
             } catch (err) {
                 console.log(err)
@@ -51,20 +50,17 @@ module.exports={
             if(req.file){
                 console.log(payload)
                 const image = req.file.path
+                console.log(image)
                 User.findOneAndUpdate({
                     _id: req.session.user.id
-                }, {payload,
-                     image:image})
-                res.status(201).json({
-                    data: result
-                })
+                }, {payload},{image:image})
             }else{
                 console.log(req.session.user.id)
                 await User.findOneAndUpdate({
                     _id: req.session.user.id
                 }, payload,{new: true})
             }
-            
+            res.redirect('/user')
         } catch (err) {
             res.redirect('/user')
         }
