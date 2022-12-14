@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%- include ../../partials/header.ejs %>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -38,6 +39,7 @@
           <div
             class="col-md-7 col-lg-5 col-xl-5 offset-xl-1 mx-2 my-2 card-login"
           >
+            <%- include ../../partials/message.ejs %>
             <h2 class="fw-bold my-4">Masuk</h2>
             <form action="/signin" method="post">
               <!-- Email input -->

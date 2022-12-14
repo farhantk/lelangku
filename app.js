@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var bodyParser = require('body-parser')
+var flash = require('connect-flash');
 const multer = require('multer')
 const methodOverride = require('method-override')
 const session = require('express-session')
@@ -67,6 +68,7 @@ app.use(methodOverride('_method'))
 app.use(logger('dev'));
 app.use(express.json());
 app.use(cookieParser());
+app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/adminlte', express.static(path.join(__dirname, '/node_modules/admin-lte/')));
 

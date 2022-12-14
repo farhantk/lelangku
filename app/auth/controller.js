@@ -14,15 +14,21 @@ module.exports={
     },
     view_signIn: async(req, res)=>{
         try {
+            const alertMessage = req.flash("alertMessage")
+            const alertStatus = req.flash("alertStatus")
+            const alert = {message:alertMessage, status:alertStatus}
             if (req.session.user === null || req.session.user === undefined) {
                 res.render('client/signin/index',{
-                    title: "Sign In | LelangKu"
+                    title: "Sign In | LelangKu",
+                    alert
                 })
               } else {
                 res.redirect('/')
               }
         } catch (err) {
             console.log(err)
+            req.flash('alertMessage', `${err.message}`)
+            req.flash('alertStatus', "danger")
             res.redirect('/signin')
         }
     },
@@ -68,9 +74,13 @@ module.exports={
                     console.log(req.session.user)
                     res.redirect('/')
                 }else{
+                    req.flash('alertMessage', "Kata sandi salah")
+                    req.flash('alertStatus', "danger")
                     res.redirect('/signin')
                 }
             }else{
+                req.flash('alertMessage', "Email belum terdaftar")
+                req.flash('alertStatus', "danger")
                 res.redirect('/signin')
             }
         } catch (error) {

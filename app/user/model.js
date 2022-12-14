@@ -24,11 +24,6 @@ let userSchema = mongoose.Schema({
     require: [true, 'kata sandi harus diisi'],
     maxlength :[225, "panjang password maksimal 225 karakter"],
   },
-  gender: {
-    type: String,
-    enum: ['Laki-laki', 'Perempuan'],
-    default: ''
-  },
   balance: {
     type: Number,
     default: 0

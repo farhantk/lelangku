@@ -69,7 +69,11 @@ module.exports={
     viewTopUp: async(req, res)=>{
         User.findOne({_id: req.session.user.id}, (err, result) => {
             try {
+                const alertMessage = req.flash("alertMessage")
+                const alertStatus = req.flash("alertStatus")
+                const alert = {message:alertMessage, status:alertStatus}
                 res.render('client/TopUp/index', {
+                    title: "TopUp",
                     name : result.name,
                     email: result.email,
                     phoneNumber: result.phoneNumber,
@@ -81,6 +85,7 @@ module.exports={
                     fullAddr: result.fullAddr,
                     balance: result.balance,
                     image: result.image,
+                    alert
                 })
                 res.redirect('/')
                 
@@ -95,18 +100,17 @@ module.exports={
         const temp = parseInt(Object.values(addbalance))
         //const temp = parseInt(addbalance)
         console.log(temp)
-        User.findOneAndUpdate({
-            _id: req.session.user.id
-        }, {$inc:{balance:temp}}, (err, result)=>{
-            try {
-                res.redirect('/')
-                res.status(200).json({
-                    data:result
-                })
-            } catch (error) {
-                console.log(error)
-            }
-        })
-        
+        try{
+            User.findOneAndUpdate({
+                _id: req.session.user.id
+            }, {$inc:{balance:temp}})
+            req.flash('alertMessage', "TopUp behasil dilakukan")
+            req.flash('alertStatus', "success")
+            res.redirect('/user/topup')
+        }catch(err){
+            req.flash('alertMessage', "TopUp gagal dilakukan")
+            req.flash('alertStatus', "danger")
+            res.redirect('/user/topup')
+        }
     }
 }
