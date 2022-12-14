@@ -6,4 +6,4 @@ let categorySchema = mongoose.Schema({
         require: [true, 'Category harus diisi']
     }
 })
-module.exports=mongoose.model('Category', categorySchema)
+module.exports=mongoose.model.Category || mongoose.model('Category', categorySchema)

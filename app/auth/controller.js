@@ -62,7 +62,8 @@ module.exports={
                     req.session.user = {
                         id: user._id,
                         email: user.email,
-                        username: user.username
+                        username: user.username,
+                        balance: user.balance
                     }
                     console.log(req.session.user)
                     res.redirect('/')

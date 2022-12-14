@@ -18,6 +18,7 @@ module.exports={
                     ward: result.ward,
                     postalCode: result.postalCode,
                     fullAddr: result.fullAddr,
+                    balance: result.balance,
                     image: result.image,
                 })
             } catch (err) {
@@ -64,5 +65,48 @@ module.exports={
         } catch (err) {
             res.redirect('/user')
         }
+    },
+    viewTopUp: async(req, res)=>{
+        User.findOne({_id: req.session.user.id}, (err, result) => {
+            try {
+                res.render('client/TopUp/index', {
+                    name : result.name,
+                    email: result.email,
+                    phoneNumber: result.phoneNumber,
+                    province: result.province,
+                    city: result.city,
+                    district: result.district,
+                    ward: result.ward,
+                    postalCode: result.postalCode,
+                    fullAddr: result.fullAddr,
+                    balance: result.balance,
+                    image: result.image,
+                })
+                res.redirect('/')
+                
+            } catch (err) {
+                console.log(err)
+            }
+        });
+    },
+    actionTopUp: async(req, res)=>{
+        var addbalance =  req.body
+        console.log(addbalance)
+        const temp = parseInt(Object.values(addbalance))
+        //const temp = parseInt(addbalance)
+        console.log(temp)
+        User.findOneAndUpdate({
+            _id: req.session.user.id
+        }, {$inc:{balance:temp}}, (err, result)=>{
+            try {
+                res.redirect('/')
+                res.status(200).json({
+                    data:result
+                })
+            } catch (error) {
+                console.log(error)
+            }
+        })
+        
     }
 }
