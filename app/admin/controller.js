@@ -4,9 +4,13 @@ const bcrypt = require('bcryptjs')
 module.exports={
     viewSignin: async(req, res)=>{
         try {
+            const alertMessage = req.flash("alertMessage")
+            const alertStatus = req.flash("alertStatus")
+            const alert = {message:alertMessage, status:alertStatus}
             if (req.session.admin === null || req.session.admin === undefined) {
                 res.render('admin/auth/signIn',{
-                    title: "Admin | LelangKu"
+                    title: "Admin | LelangKu",
+                    alert
                 })
               } else {
                 res.redirect('/admin/dashboard')
@@ -33,9 +37,13 @@ module.exports={
                     console.log(req.session.admin)
                     res.redirect('/admin/dashboard')
                 }else{
+                    req.flash('alertMessage', "Kata sandi salah")
+                    req.flash('alertStatus', "danger")
                     res.redirect('/admin')
                 }
             }else{
+                req.flash('alertMessage', "Email tidak terdaftar sebagai admin")
+                req.flash('alertStatus', "danger")
                 res.redirect('/admin')
             }
         } catch (error) {
