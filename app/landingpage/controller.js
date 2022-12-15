@@ -1,11 +1,12 @@
 const User = require('../user/model')
-//let Category = require('../Category/model')
+const Category = require('../Category/model')
 
 
 module.exports={
     index: async(req, res)=>{
         try {
             const user = await User.findOne({_id: req.session.user.id})
+            const category = await Category.find()
             //let category = await Category.find({})
             res.render('client/landingpage/index', {
                 name : user.name,
@@ -19,7 +20,7 @@ module.exports={
                 postalCode: user.postalCode,
                 fullAddr: user.fullAddr,
                 image: user.image,
-                //category
+                category
             })
         } catch (err) {
             console.log(err)

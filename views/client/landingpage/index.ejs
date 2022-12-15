@@ -94,33 +94,11 @@
         <h4 class="card-title fw-bold">Kategori</h4>
         <div class="card-body flex-nowrap">
           <div class="button-kategori d-inline-flex justify-content-start mt-3">
-            <a href="#" class="btn btn-outline-primary"
-              ><img src="assets/images/Smartphone.png" alt="" />Smartphone</a
-            >
-            <a href="#" class="btn btn-outline-primary"
-              ><img src="assets/images/Smartphone.png" alt="" />Laptop</a
-            >
-            <a href="#" class="btn btn-outline-primary"
-              ><img src="assets/images/Smartphone.png" alt="" />Makanan</a
-            >
-            <a href="#" class="btn btn-outline-primary"
-              ><img src="assets/images/Smartphone.png" alt="" />Perkakas</a
-            >
-            <a href="#" class="btn btn-outline-primary"
-              ><img src="assets/images/Smartphone.png" alt="" />Smartphone</a
-            >
-            <a href="#" class="btn btn-outline-primary"
-              ><img src="assets/images/Smartphone.png" alt="" />Laptop</a
-            >
-            <a href="#" class="btn btn-outline-primary"
-              ><img src="assets/images/Smartphone.png" alt="" />Makanan</a
-            >
-            <a href="#" class="btn btn-outline-primary"
-              ><img src="assets/images/Smartphone.png" alt="" />Perkakas</a
-            >
-            <a href="#" class="btn btn-outline-primary"
-              ><img src="assets/images/Smartphone.png" alt="" />Perkakas</a
-            >
+            <% for(var i=0; i<category.length; i++) {%>
+              <a href="#" class="btn btn-outline-primary"
+                ><img src="assets/images/Smartphone.png" alt="" /><%= category[i].name %> </a
+              >
+            <% } %>
           </div>
         </div>
       </div>

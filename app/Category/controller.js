@@ -1,4 +1,4 @@
-const Category = require('./model')
+const Category = require('../Category/model')
 
 module.exports={
     index:async(req, res)=>{
