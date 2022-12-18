@@ -5,8 +5,12 @@ const jwt = require('jsonwebtoken')
 module.exports={
     view_register: async(req, res)=>{
         try {
+            const alertMessage = req.flash("alertMessage")
+            const alertStatus = req.flash("alertStatus")
+            const alert = {message:alertMessage, status:alertStatus}
             res.render('client/signup/index',{
-                title: "Masuk | LelangKu"
+                title: "Masuk | LelangKu",
+                alert
             })
         } catch (err) {
             console.log(err)
@@ -39,19 +43,23 @@ module.exports={
 
             }else{
                 let user = new User(payload)
-                await user.save()
-                delete user._doc.password
-                res.status(201).json({
-                    data: user
-                })
+                if(payload.password.length > 8){
+                    await user.save()
+                    delete user._doc.password
+                    res.status(201).json({
+                        data: user,
+                    })
+                }else{
+                    req.flash('alertMessage', "Panjang kata sandi harus lebih dari 8 karakter")
+                    req.flash('alertStatus', "danger")
+                    res.redirect('/signup')
+                }
             }
         } catch (err) {
             if(err && err.name === "ValidationError"){
-                return res.status(422).json({
-                    error: 1,
-                    message: err.message,
-                    fields: err.errors
-                })
+                req.flash('alertMessage', "Email sudah terdaftar")
+                req.flash('alertStatus', "danger")
+                res.redirect('/signup')
             }
             next(err)
         }

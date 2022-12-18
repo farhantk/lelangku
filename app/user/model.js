@@ -85,7 +85,7 @@ userSchema.path('email').validate(async function (value){
     } catch (error) {
         throw error
     }
-}, attr => `${attr.value} sudah terdaftar`)
+}, attr => {`${attr.value} sudah terdaftar`})
 
 userSchema.pre('save', function (next){
     this.password = bcrypt.hashSync(this.password, HASH_ROUND)
