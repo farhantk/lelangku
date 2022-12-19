@@ -565,29 +565,196 @@ footer {
 }
 
 /* Bagian Top Up */
-.container-topup{
+.container-topup {
   position: relative;
   top: 100px;
   padding: 30px;
   width: 1000px;
   background: #fff;
   border-radius: 10px;
-  box-shadow: 0 0px 7px rgba(0, 0, 0, 0.20);
+  box-shadow: 0 0px 7px rgba(0, 0, 0, 0.2);
 }
 
-.container-topup h2{
+.container-topup h2 {
   margin: 0px;
   padding: 30px;
   box-sizing: border-box;
   font-family: 'inter-Bold', sans-serif;
 }
 
-.container-topup_footer
-{
+.container-topup_footer {
   padding: 30px;
   width: 1000px;
   height: fit-content;
   background: #fff;
   border-radius: 10px;
-  box-shadow: 0 0px 2px rgba(0, 0, 0, 0.20);
+  box-shadow: 0 0px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* bagian detail item */
+.small-img-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.small-img-col {
+  flex-basis: 24%;
+  cursor: pointer;
+}
+
+.time-and-bid {
+  display: flex;
+}
+
+.time-and-bid p {
+  font-size: 18px;
+}
+
+.time-and-bid i {
+  font-size: 24px;
+  margin-right: 2px;
+}
+
+.time-and-bid span {
+  margin: 0px 6px;
+}
+
+.detail-item-harga {
+  font-weight: bold;
+  color: #ff2f2f;
+}
+
+.button-bid {
+  padding: 15px 230px;
+}
+
+.profile-section img {
+  margin-right: 10px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.profile-section .username {
+  font-weight: bold;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  transition: all 5s ease-in-out;
+  position: absolute;
+  float: left;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-weight: bold;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: #004aad;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+
+/* bagian item-toko */
+.divider-item-toko {
+  top: 50px;
+  margin: 100px 125px 80px 125px;
+}
+
+.card-profile-toko {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 0px 125px 0px 125px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  background-color: #fff;
+  padding: 15px 15px 10px 15px;
+  border-radius: 10px;
+}
+
+.card-profile-toko img {
+  border-radius: 50%;
+}
+
+.card-horizontal {
+  display: flex;
+}
+
+.img-square-wrapper-toko {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+.img-square-wrapper-toko img {
+  width: 100%;
+  min-height: 100%;
+}
+
+.card-body-toko {
+  padding-left: 20px;
+}
+
+.wrap-button-profile-toko {
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.upload-item-section {
+  margin-top: 100px;
+  text-align: center;
+}
+
+.upload-item-section img {
+  max-width: 350px;
+  max-height: 350px;
+}
+
+.button-lelang {
+  text-align: center;
+}
+
+.button-lelang .btn {
+  background-color: #004aad;
+}
+
+.wrap-button-toko {
+  padding-top: 20px;
 }
