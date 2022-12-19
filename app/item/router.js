@@ -5,7 +5,7 @@ const { isLoginUser } = require('../middleware/auth')
 
 /* GET home page. */
 router.get('/landingpage', isLoginUser, landingPage);
-router.get('/detail/:id', isLoginUser, detailItem);
+router.get('/:id', isLoginUser, detailItem);
 router.post('/', isLoginUser, createItem);
 
 

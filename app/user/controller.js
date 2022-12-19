@@ -9,6 +9,7 @@ module.exports={
         User.findOne({_id: req.session.user.id}, (err, result) => {
             try {
                 res.render('client/UserProfile/index', {
+                    title: "User",
                     name : result.name,
                     email: result.email,
                     phoneNumber: result.phoneNumber,
@@ -88,7 +89,6 @@ module.exports={
                     alert
                 })
                 res.redirect('/')
-                
             } catch (err) {
                 console.log(err)
             }
@@ -96,21 +96,21 @@ module.exports={
     },
     actionTopUp: async(req, res)=>{
         var addbalance =  req.body
-        console.log(addbalance)
         const temp = parseInt(Object.values(addbalance))
         //const temp = parseInt(addbalance)
-        console.log(temp)
-        try{
-            User.findOneAndUpdate({
-                _id: req.session.user.id
-            }, {$inc:{balance:temp}})
-            req.flash('alertMessage', "TopUp behasil dilakukan")
-            req.flash('alertStatus', "success")
-            res.redirect('/user/topup')
-        }catch(err){
-            req.flash('alertMessage', "TopUp gagal dilakukan")
-            req.flash('alertStatus', "danger")
-            res.redirect('/user/topup')
-        }
+        User.findOneAndUpdate({
+            _id: req.session.user.id
+        }, {$inc:{balance:temp}}, (err, result)=>{
+            try {
+                req.flash('alertMessage', "Topup berhasil dilakukan")
+                req.flash('alertStatus', "success")
+                res.redirect('/user/topup')
+                res.status(200).json({
+                    data:result
+                })
+            } catch (err) {
+                console.log(err)
+            }
+        })
     }
 }

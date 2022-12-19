@@ -82,7 +82,7 @@ app.use('/admin/bank', bankRouter);
 app.use('/', authRouter);
 app.use('/', landingPageRouter);
 app.use('/user', userRouter);
-app.use('/api/item', itemRouter)
+app.use('/', itemRouter)
 
 
 // catch 404 and forward to error handler
