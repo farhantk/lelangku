@@ -19,17 +19,18 @@ let itemSchema = mongoose.Schema({
   },
   price: {
     type: Number,
-    default: 0,
     require: [true, 'Harga awal harus diisi']
-  },
-  floatingPrice: {
-    type: Number,
-    default: 0,
   },
   post: {
     type: String,
     enum: ['Y', 'N'],
     default: 'Y',
+    require: true
+  },
+  condition: {
+    type: String,
+    enum: ['Baru', 'Bekas'],
+    default: 'Baru',
     require: true
   },
   timeLimit: {

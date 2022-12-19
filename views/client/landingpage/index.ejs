@@ -112,222 +112,38 @@
       class="container d-flex justify-content-start align-items-start flex-wrap"
     >
       <div class="row">
-        <div class="card ms-4">
-          <span class="percent">Baru</span>
-          <div class="card-image">
-            <a class="gambar-hover" href="#"
-              ><img
-                src="assets/images/shoe-1.jpg"
+        <% for(var i=0; i<item.length;i++){ %>
+            <div class="card">
+              <span class="percent"><%= item[i].condition %> </span>
+              <div class="card-image">
+                <a class="gambar-hover" href="#"
+                ><img
+                src="<%= item[i].image %>"
                 width="500"
                 style="border-radius: 10px"
-              />
-              <div class="overlay-card-product">
-                <div class="text">View detail</div>
+                />
+                <div class="overlay-card-product">
+                  <div class="text">View detail</div>
+                </div>
+              </a>
+            </div>
+            <div class="card-inner">
+              <h5 class="mb-0 fw-bold"><%= item[i].name %> </h5>
+              <div class="price">
+                <span>Rp. <%= item[i].price %></span>
               </div>
-            </a>
-          </div>
-          <div class="card-inner">
-            <h5 class="mb-0 fw-bold">Redmi Note 10</h5>
-            <div class="price">
-              <span>Rp.4.500.000</span>
-            </div>
-            <span>Kab.Bandung</span>
-
-            <div class="detail-item mt-3">
-              <span class="">Berakhir pada</span>
-            </div>
-            <span class="fw-bold">15 Desember 2022</span>
-            <div class="detail-item-waktu">
-              <span class="fw-bold">05:00</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <span class="percent">Baru</span>
-          <div class="card-image">
-            <a class="gambar-hover" href="#"
-              ><img
-                src="assets/images/shoe-1.jpg"
-                width="500"
-                style="border-radius: 10px"
-              />
-              <div class="overlay-card-product">
-                <div class="text">View detail</div>
+              <span>Kab.Bandung</span>
+              
+              <div class="detail-item mt-3">
+                <span class="">Berakhir pada</span>
               </div>
-            </a>
-          </div>
-          <div class="card-inner">
-            <h5 class="mb-0 fw-bold">Redmi Note 10</h5>
-            <div class="price">
-              <span>Rp.4.500.000</span>
-            </div>
-            <span>Kab.Bandung</span>
-
-            <div class="detail-item mt-3">
-              <span class="">Berakhir pada</span>
-            </div>
-            <span class="fw-bold">15 Desember 2022</span>
-            <div class="detail-item-waktu">
-              <span class="fw-bold">05:00</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <span class="percent">Baru</span>
-          <div class="card-image">
-            <a class="gambar-hover" href="#"
-              ><img
-                src="assets/images/shoe-1.jpg"
-                width="500"
-                style="border-radius: 10px"
-              />
-              <div class="overlay-card-product">
-                <div class="text">View detail</div>
+              <span class="fw-bold">15 Desember 2022</span>
+              <div class="detail-item-waktu">
+                <span class="fw-bold">05:00</span>
               </div>
-            </a>
-          </div>
-          <div class="card-inner">
-            <h5 class="mb-0 fw-bold">Redmi Note 10</h5>
-            <div class="price">
-              <span>Rp.4.500.000</span>
-            </div>
-            <span>Kab.Bandung</span>
-
-            <div class="detail-item mt-3">
-              <span class="">Berakhir pada</span>
-            </div>
-            <span class="fw-bold">15 Desember 2022</span>
-            <div class="detail-item-waktu">
-              <span class="fw-bold">05:00</span>
             </div>
           </div>
-        </div>
-
-        <div class="card">
-          <span class="percent">Baru</span>
-          <div class="card-image">
-            <a class="gambar-hover" href="#"
-              ><img
-                src="assets/images/shoe-1.jpg"
-                width="500"
-                style="border-radius: 10px"
-              />
-              <div class="overlay-card-product">
-                <div class="text">View detail</div>
-              </div>
-            </a>
-          </div>
-          <div class="card-inner">
-            <h5 class="mb-0 fw-bold">Redmi Note 10</h5>
-            <div class="price">
-              <span>Rp.4.500.000</span>
-            </div>
-            <span>Kab.Bandung</span>
-
-            <div class="detail-item mt-3">
-              <span class="">Berakhir pada</span>
-            </div>
-            <span class="fw-bold">15 Desember 2022</span>
-            <div class="detail-item-waktu">
-              <span class="fw-bold">05:00</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="card ms-4">
-          <span class="percent">Baru</span>
-          <div class="card-image">
-            <a class="gambar-hover" href="#"
-              ><img
-                src="assets/images/shoe-1.jpg"
-                width="500"
-                style="border-radius: 10px"
-              />
-              <div class="overlay-card-product">
-                <div class="text">View detail</div>
-              </div>
-            </a>
-          </div>
-          <div class="card-inner">
-            <h5 class="mb-0 fw-bold">Redmi Note 10</h5>
-            <div class="price">
-              <span>Rp.4.500.000</span>
-            </div>
-            <span>Kab.Bandung</span>
-
-            <div class="detail-item mt-3">
-              <span class="">Berakhir pada</span>
-            </div>
-            <span class="fw-bold">15 Desember 2022</span>
-            <div class="detail-item-waktu">
-              <span class="fw-bold">05:00</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <span class="percent">Baru</span>
-          <div class="card-image">
-            <a class="gambar-hover" href="#"
-              ><img
-                src="assets/images/shoe-1.jpg"
-                width="500"
-                style="border-radius: 10px"
-              />
-              <div class="overlay-card-product">
-                <div class="text">View detail</div>
-              </div>
-            </a>
-          </div>
-          <div class="card-inner">
-            <h5 class="mb-0 fw-bold">Redmi Note 10</h5>
-            <div class="price">
-              <span>Rp.4.500.000</span>
-            </div>
-            <span>Kab.Bandung</span>
-
-            <div class="detail-item mt-3">
-              <span class="">Berakhir pada</span>
-            </div>
-            <span class="fw-bold">15 Desember 2022</span>
-            <div class="detail-item-waktu">
-              <span class="fw-bold">05:00</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <span class="percent">Baru</span>
-          <div class="card-image">
-            <a class="gambar-hover" href="#"
-              ><img
-                src="assets/images/shoe-1.jpg"
-                width="500"
-                style="border-radius: 10px"
-              />
-              <div class="overlay-card-product">
-                <div class="text">View detail</div>
-              </div>
-            </a>
-          </div>
-          <div class="card-inner">
-            <h5 class="mb-0 fw-bold">Redmi Note 10</h5>
-            <div class="price">
-              <span>Rp.4.500.000</span>
-            </div>
-            <span>Kab.Bandung</span>
-
-            <div class="detail-item mt-3">
-              <span class="">Berakhir pada</span>
-            </div>
-            <span class="fw-bold">15 Desember 2022</span>
-            <div class="detail-item-waktu">
-              <span class="fw-bold">05:00</span>
-            </div>
-          </div>
-        </div>
+        <% } %>
       </div>
     </div>
 

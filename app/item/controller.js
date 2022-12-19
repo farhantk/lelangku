@@ -40,13 +40,12 @@ module.exports={
     },
     createItem: async(req, res)=>{
         try {
-            const {name, desc, category} = req.body
-            const payload = req.body
-            const image = req.file.path
-            console.log(payload)
-            let item = new Item({payload, name, desc, category, image:image})
+            const {name, desc, category, price, timeLimit, condition} = req.body
+            const image = req.file.path.split('\\').slice(1).join('\\');
+            console.log(">>>", typeof(image))
+            console.log(image)
+            let item = new Item({ name, desc, category, price, timeLimit, condition, image:image})
             await item.save()
-            console.log(payload)
             res.status(201).json({
                 data: item
             })

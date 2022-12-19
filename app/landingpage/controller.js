@@ -1,5 +1,6 @@
 const User = require('../user/model')
 const Category = require('../Category/model')
+const Item = require('../item/model')
 
 
 module.exports={
@@ -8,6 +9,7 @@ module.exports={
             const user = await User.findOne({_id: req.session.user.id})
             const category = await Category.find()
             //let category = await Category.find({})
+            const item =  await Item.find()
             res.render('client/landingpage/index', {
                 name : user.name,
                 email: user.email,
@@ -20,7 +22,8 @@ module.exports={
                 postalCode: user.postalCode,
                 fullAddr: user.fullAddr,
                 image: user.image,
-                category
+                category,
+                item
             })
         } catch (err) {
             console.log(err)

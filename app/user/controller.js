@@ -10,6 +10,7 @@ module.exports={
             try {
                 res.render('client/UserProfile/index', {
                     title: "User",
+                    username : result.username,
                     name : result.name,
                     email: result.email,
                     phoneNumber: result.phoneNumber,
@@ -75,6 +76,7 @@ module.exports={
                 const alert = {message:alertMessage, status:alertStatus}
                 res.render('client/TopUp/index', {
                     title: "TopUp",
+                    username : result.username,
                     name : result.name,
                     email: result.email,
                     phoneNumber: result.phoneNumber,
