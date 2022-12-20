@@ -52,7 +52,7 @@ module.exports={
 
             if(req.file){
                 console.log(payload)
-                const image = req.file.path
+                const image = req.file.path.split('\\').slice(1).join('\\');
                 console.log(image)
                 User.findOneAndUpdate({
                     _id: req.session.user.id

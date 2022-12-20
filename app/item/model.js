@@ -21,6 +21,10 @@ let itemSchema = mongoose.Schema({
     type: Number,
     require: [true, 'Harga awal harus diisi']
   },
+  bidCount: {
+    type: Number,
+    default: 0
+  },
   post: {
     type: String,
     enum: ['Y', 'N'],
@@ -47,6 +51,7 @@ let itemSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
+
 
 }, { timestamps: true })
 

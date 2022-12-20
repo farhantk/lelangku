@@ -116,7 +116,7 @@
             <div class="card">
               <span class="percent"><%= item[i].condition %> </span>
               <div class="card-image">
-                <a class="gambar-hover" href="#"
+                <a class="gambar-hover" href="/<%= item[i]._id %>"
                 ><img
                 src="<%= item[i].image %>"
                 width="500"
@@ -132,7 +132,7 @@
               <div class="price">
                 <span>Rp. <%= item[i].price %></span>
               </div>
-              <span>Kab.Bandung</span>
+              <span><%= item[i].seller.city %></span>
               
               <div class="detail-item mt-3">
                 <span class="">Berakhir pada</span>
