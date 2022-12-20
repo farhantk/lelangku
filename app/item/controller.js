@@ -27,6 +27,8 @@ module.exports={
             }).populate('seller')
             const item_2 =  await Item.find()
             res.render('client/detailItem/index',{
+                id: req.session.user.id,
+                title:"detail item",
                 name:user.name,
                 balance: user.balance,
                 itemName: item.name,

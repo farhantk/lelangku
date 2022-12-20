@@ -17,6 +17,7 @@ var authRouter = require('./app/auth/router');
 var landingPageRouter = require('./app/landingpage/router');
 var userRouter = require('./app/user/router');
 var itemRouter = require('./app/item/router');
+var shopRouter = require('./app/shop/router');
 
 // ADMIN
 var adminRouter = require('./app/admin/router');
@@ -78,11 +79,13 @@ app.use('/admin/dashboard', adminDashboardRouter);
 app.use('/admin/category', categoryRouter);
 app.use('/admin/expedition', expeditionRouter);
 app.use('/admin/bank', bankRouter);
-//API
+//Client
 app.use('/', authRouter);
 app.use('/', landingPageRouter);
 app.use('/user', userRouter);
 app.use('/', itemRouter)
+app.use('/shop', shopRouter)
+
 
 
 // catch 404 and forward to error handler
