@@ -6,6 +6,9 @@ const Item = require('../item/model')
 module.exports={
     index: async(req, res)=>{
         try {
+            const alertMessage = req.flash("alertMessage")
+            const alertStatus = req.flash("alertStatus")
+            const alert = {message:alertMessage, status:alertStatus}
             const user = await User.findOne({_id: req.session.user.id})
             const category = await Category.find()
             //let category = await Category.find({})
@@ -24,7 +27,8 @@ module.exports={
                 fullAddr: user.fullAddr,
                 image: user.image,
                 category,
-                item
+                item,
+                alert
             })
         } catch (err) {
             console.log(err)

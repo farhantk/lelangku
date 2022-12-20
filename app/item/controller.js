@@ -20,6 +20,10 @@ module.exports={
     },
     detailItem: async(req, res)=>{
         try {
+            const alertMessage = req.flash("alertMessage")
+            const alertStatus = req.flash("alertStatus")
+            const alert = {message:alertMessage, status:alertStatus}
+
             const user = await User.findOne({_id: req.session.user.id})
             const {id} =  req.params
             let item = await Item.findOne({
@@ -35,7 +39,8 @@ module.exports={
                 desc: item.desc,
                 price: item.price,
                 item,
-                item_2
+                item_2,
+                alert
             })
         } catch (err) {
             res.status(500).json({
@@ -64,13 +69,29 @@ module.exports={
             console.log("heyaa")
             const buyyer = req.session.user.id
             const {id} = req.params
-
-            await Item.findOneAndUpdate({
-                _id:id
-            }, {buyyer:buyyer, $inc:{price:50000}, $inc:{bidCount:1}})
-            res.redirect('/')
+            const user = await User.findOne({
+                _id: buyyer
+            })
+            const item = await Item.findOne({
+                _id: id
+            })
+            if(user.balance>=(item.price+50000)){
+                await Item.findOneAndUpdate({
+                    _id:id
+                }, {buyyer:buyyer, $inc:{price:50000}, $inc:{bidCount:1}})
+                req.flash('alertMessage', "Selamat bid berhasil dilakukan")
+                req.flash('alertStatus', "success")
+                res.redirect('/')
+            }else{
+                req.flash('alertMessage', "Saldo anda tidak mencukupi, silahkan isi saldo terlebih dahulu")
+                req.flash('alertStatus', "danger")
+                res.redirect('/')
+            }
+            
         } catch (err) {
-            console.log(err)            
+            req.flash('alertMessage', err.message)
+            req.flash('alertStatus', "danger")
+            res.redirect('/')          
         }
     }
 }

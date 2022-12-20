@@ -1,4 +1,3 @@
-<%- include ../../partials/header.ejs %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,6 +7,11 @@
   <title>Profile Saya</title>
 
   <!--Logo bar Lelangku-->
+  <link rel="stylesheet" href="/https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/adminlte/plugins/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/adminlte/dist/css/adminlte.min.css">
   <link rel="icon" href="/images/Lelangku_logo.png" type="image/x-icon">
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -23,6 +27,7 @@
   <section id="profile">
     <div class="container">
       <div class="row">
+        <%- include ../../partials/message.ejs %>
         <div class="col-12">
           <h2 style="font-family: 'Inter', sans-serif; font-weight:700">Ubah Profil Saya</h2>
         </div>
