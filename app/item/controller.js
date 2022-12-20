@@ -78,7 +78,7 @@ module.exports={
             if(user.balance>=(item.price+50000)){
                 await Item.findOneAndUpdate({
                     _id:id
-                }, {buyyer:buyyer, $inc:{price:50000}, $inc:{bidCount:1}})
+                }, {buyyer:buyyer, $inc:{bidCount:1,price:50000}})
                 req.flash('alertMessage', "Selamat bid berhasil dilakukan")
                 req.flash('alertStatus', "success")
                 res.redirect('/')
