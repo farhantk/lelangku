@@ -1,10 +1,6 @@
 const mongoose = require('mongoose')
 
 let bankSchema = mongoose.Schema({
-  name: {
-    type: String,
-    default: "LelangKu"
-  },
   bankName: {
     type: String,
     require: [true, 'Nama bank harus diisi']

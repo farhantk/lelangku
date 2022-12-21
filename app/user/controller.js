@@ -1,4 +1,5 @@
 const User =  require('./model')
+const Bank =  require('../bank/model')
 const path = require('path')
 const fs = require('fs')
 const config = require('../../config')
@@ -77,33 +78,35 @@ module.exports={
         }
     },
     viewTopUp: async(req, res)=>{
-        User.findOne({_id: req.session.user.id}, (err, result) => {
-            try {
-                const alertMessage = req.flash("alertMessage")
-                const alertStatus = req.flash("alertStatus")
-                const alert = {message:alertMessage, status:alertStatus}
-                res.render('client/TopUp/index', {
-                    id: req.session.user.id,
-                    title: "TopUp",
-                    username : result.username,
-                    name : result.name,
-                    email: result.email,
-                    phoneNumber: result.phoneNumber,
-                    province: result.province,
-                    city: result.city,
-                    district: result.district,
-                    ward: result.ward,
-                    postalCode: result.postalCode,
-                    fullAddr: result.fullAddr,
-                    balance: result.balance,
-                    image: result.image,
-                    alert
-                })
-                res.redirect('/')
-            } catch (err) {
-                console.log(err)
-            }
-        });
+        try {
+            const alertMessage = req.flash("alertMessage")
+            const alertStatus = req.flash("alertStatus")
+            const alert = {message:alertMessage, status:alertStatus}
+
+            const user = await User.findOne({_id: req.session.user.id})
+            const bank = await Bank.find()
+            res.render('client/TopUp/index', {
+                id: req.session.user.id,
+                title: "TopUp",
+                username : user.username,
+                name : user.name,
+                email: user.email,
+                phoneNumber: user.phoneNumber,
+                province: user.province,
+                city: user.city,
+                district: user.district,
+                ward: user.ward,
+                postalCode: user.postalCode,
+                fullAddr: user.fullAddr,
+                balance: user.balance,
+                image: user.image,
+                alert,
+                bank
+            })
+            res.redirect('/')
+        } catch (err) {
+            console.log(err)
+        };
     },
     actionTopUp: async(req, res)=>{
         var addbalance =  req.body

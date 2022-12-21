@@ -21,6 +21,7 @@ module.exports={
             const alertMessage = req.flash("alertMessage")
             const alertStatus = req.flash("alertStatus")
             const alert = {message:alertMessage, status:alertStatus}
+
             if (req.session.user === null || req.session.user === undefined) {
                 res.render('client/signin/index',{
                     title: "Sign In | LelangKu",
@@ -39,21 +40,29 @@ module.exports={
     register: async(req,res,next)=>{
         try {
             const payload = req.body
-            if(req.file){
-
-            }else{
-                let user = new User(payload)
-                if(payload.password.length > 8){
-                    await user.save()
-                    delete user._doc.password
-                    res.status(201).json({
-                        data: user,
-                    })
+            if(payload.password.length > 8){
+                if(payload.username.length != 0){
+                    if(payload.name.length != 0){
+                        let user = new User(payload)
+                        await user.save()
+                        delete user._doc.password
+                        req.flash('alertMessage', "Berhasil mendaftar, silahkan masuk")
+                        req.flash('alertStatus', "success")
+                        res.redirect('/signin')
+                    }else{
+                        req.flash('alertMessage', "Nama harus diisi")
+                        req.flash('alertStatus', "danger")
+                        res.redirect('/signup')
+                    }
                 }else{
-                    req.flash('alertMessage', "Panjang kata sandi harus lebih dari 8 karakter")
+                    req.flash('alertMessage', "Username harus diisi")
                     req.flash('alertStatus', "danger")
                     res.redirect('/signup')
                 }
+            }else{
+                req.flash('alertMessage', "Panjang kata sandi harus lebih dari 8 karakter")
+                req.flash('alertStatus', "danger")
+                res.redirect('/signup')
             }
         } catch (err) {
             if(err && err.name === "ValidationError"){

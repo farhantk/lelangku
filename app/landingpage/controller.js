@@ -12,7 +12,7 @@ module.exports={
             const user = await User.findOne({_id: req.session.user.id})
             const category = await Category.find()
             //let category = await Category.find({})
-            const item =  await Item.find().populate('seller')
+            const item =  await Item.find({post:"Y"}).populate('seller')
             res.render('client/landingpage/index', {
                 id: req.session.user.id,
                 name : user.name,
