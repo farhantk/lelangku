@@ -412,8 +412,8 @@ footer {
 /* --------------- BAGIAN LANDING PAGE ---------------- */
 
 /* Bagian Login & Sign Up */
-.divider:after,
-.divider:before {
+.divider-signin-signup:after,
+.divider-signin-signup:before {
   content: '';
   flex: 1;
   height: 3px;
