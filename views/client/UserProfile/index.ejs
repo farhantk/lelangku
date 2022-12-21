@@ -29,46 +29,61 @@
       <div class="row">
         <%- include ../../partials/message.ejs %>
         <div class="col-12">
-          <h2 style="font-family: 'Inter', sans-serif; font-weight:700">Ubah Profil Saya</h2>
+          <h2 style="font-weight: bold;">Ubah Profil Saya</h2>
         </div>
 
         <div class="row">
           <div class="col-md-4 text-center">
             <div class="card-propict">
               <div class="circle-icon position position-relative mx-auto">
-                <img src="" alt="" class="position-absolute top-50 start-50 translate-middle">
+                <img src="assets/images/profile icon.png" alt="" class="position-absolute top-50 start-50 translate-middle">
               </div>
-              <button type="button" class="btn btn-outline-primary">Pilih Foto</button>
+              <div class="upload">
+                <button type = "button" class = "btn-warning">
+                  <i class = "fa fa-upload"></i> Upload Foto
+                  <input type="file">
+                </button>
+              </div>
               <p class="mt-3">Besar maksimal gambar 5 Mb</p>
             </div>
           </div>
           
           <div class="col-md-4">
             <div class="card-textbox">
-              <form action="/user?_method=PUT" method="post">
+              <form action="" method="post">
                 <form class="row g-3">
                   <div class="mb-3 row">
-                    <div class="mb-3 row">
-                      <label for="inputNama" class="col-sm-2 col-form-label">Username</label>
-                      <div class="col-sm-8">
-                        <input type="text" readonly class="form-control-plaintext" id="inputNama" value='<%= username %>' >
-                      </div>
-                    </div>
-                    <div class="mb-3 row">
-                      <label for="inputNama" class="col-sm-2 col-form-label">Email</label>
-                      <div class="col-sm-8">
-                        <input type="text" readonly class="form-control-plaintext" id="inputNama" value='<%= email %>' >
-                      </div>
-                    </div>
                     <label for="inputNama" class="col-sm-2 col-form-label">Nama</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" id="inputNama" name="name" value='<%= name %>' >
+                      <input type="text" class="form-control" id="inputNama">
                     </div>
                   </div>
+      
+                  <div class="mb-3 row">
+                    <label for="inputNama" class="col-sm-2 col-form-label">Tanggal Lahir</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="inputNama">
+                    </div>
+                  </div>
+      
+                  <div class="mb-3 row">
+                    <label for="inputNama" class="col-sm-2 col-form-label">Jenis Kelamin</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="inputNama"><br>
+                    </div>
+                  </div>
+      
+                  <div class="mb-3 row">
+                    <label for="inputNama" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="inputNama">
+                    </div>
+                  </div>
+      
                   <div class="mb-3 row">
                     <label for="inputNama" class="col-sm-2 col-form-label">Nomor HP</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" id="inputNama" name="phoneNumber" value='<%= phoneNumber %>'><br>
+                      <input type="text" class="form-control" id="inputNama"><br>
                     </div>
                   </div>
       
@@ -79,49 +94,49 @@
                   <div class="mb-3 row">
                     <label for="inputNama" class="col-sm-2 col-form-label">Provinsi</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" id="inputNama" name="province" value='<%= province %>'>
+                      <input type="text" class="form-control" id="inputNama">
                     </div>
                   </div>
       
                   <div class="mb-3 row">
                     <label for="inputNama" class="col-sm-2 col-form-label">Kota</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" id="inputNama" name="city" value='<%= city %>'>
+                      <input type="text" class="form-control" id="inputNama">
                     </div>
                   </div>
       
                   <div class="mb-3 row">
                     <label for="inputNama" class="col-sm-2 col-form-label">Kecamatan</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" id="inputNama" name="district" value='<%= district %>'>
+                      <input type="text" class="form-control" id="inputNama">
                     </div>
                   </div>
       
                   <div class="mb-3 row">
                     <label for="inputNama" class="col-sm-2 col-form-label">Kelurahan</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" id="inputNama" name="ward" value='<%= ward %>'>
+                      <input type="text" class="form-control" id="inputNama">
                     </div>
                   </div>
       
                   <div class="mb-3 row">
                     <label for="inputNama" class="col-sm-2 col-form-label">Alamat Lengkap</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" id="inputNama" name="fullAddr" value='<%= fullAddr %>'>
+                      <input type="text" class="form-control" id="inputNama">
                     </div>
                   </div>
       
                   <div class="mb-3 row">
                     <label for="inputNama" class="col-sm-2 col-form-label">Kode pos</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" id="inputNama" name="postalCode" value='<%= postalCode %>'>
+                      <input type="text" class="form-control" id="inputNama">
                     </div>
                   </div>
       
                   <div class="col-12">
                     <button type="submit" class="btn btn-primary">Simpan</button>
                   </div>
-              </form>
+                </form>
             </div>
           </div>
 
