@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LelangKu - Your Best Auction Place</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="stylesheets/style.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <%- include ../../partials/client/navbar.ejs %>
+
+    <div class="container">
+
+        <!-- JUDUL HALAMAN -->
+        <div class="row">
+          <div class="col-12"><br>
+            <h2 class="text-judul-halaman">Add Item</h2>
+          </div>
+        </div>
+  
+  
+        <div class="row">
+          <!-- Kontainer 1 -->
+          
+          <!-- KOLOM 1 -->
+          <div class="kotak col-12 shadow p-3 mb-5 bg-body rounded">
+            <h3 class="text-judul offset-1">Upload Produk</h3>
+            <form>
+              <div class="row align-items-start">
+                <label class="col-md-3 offset-1 ">
+                  <h3 class="text-judul">Foto Produk</h3>
+                  <p>
+                    Format gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran
+                    minimum 700 x 700 px).<br><br>
+                    Pilih foto produk hingga 4 foto sekaligus di sini. Cantumkan min. 3 foto yang
+                    menarik agar produk semakin menarik pembeli.
+                  </p>
+                </label>
+  
+  
+  
+                <!-- KOLOM 1 -->
+  
+                <label class="form col-md-7 offset-md-1 align-baseline">
+                  <div class="grid">
+                    <div class="form-element">
+                      <input type="file" id="file-1" accept="image/*">
+                      <label for="file-1" id="file-1-preview">
+                        <img src="https://bit.ly/3ubuq5o" alt="">
+                        <div>
+                          <span>+</span>
+                        </div>
+                      </label>
+                    </div>
+                    <div class="form-element">
+                      <input type="file" id="file-2" accept="image/*">
+                      <label for="file-2" id="file-2-preview">
+                        <img src="https://bit.ly/3ubuq5o" alt="">
+                        <div>
+                          <span>+</span>
+                        </div>
+                      </label>
+                    </div>
+                    <div class="form-element">
+                      <input type="file" id="file-3" accept="image/*">
+                      <label for="file-3" id="file-3-preview">
+                        <img src="https://bit.ly/3ubuq5o" alt="">
+                        <div>
+                          <span>+</span>
+                        </div>
+                      </label>
+                    </div>
+                    <div class="form-element">
+                      <input type="file" id="file-4" accept="image/*">
+                      <label for="file-4" id="file-4-preview">
+                        <img src="https://bit.ly/3ubuq5o" alt="">
+                        <div>
+                          <span>+</span>
+                        </div>
+                      </label>
+                    </div>
+  
+                  </div>
+                </label>
+              </div>
+          </div>
+  
+          </form>
+        </div>
+  
+        
+  
+        <!-- Kontainer 2 -->
+  
+        <div class="col-12 shadow p-3 mb-5 bg-body rounded">
+          <form>
+            <h3 class="text-judul  offset-1">Informasi Produk</h3>
+  
+            <!-- KOLOM 1 -->
+            <div class="row">
+              <label class="col-md-3  offset-1">
+                <h3 class="text-judul">Nama Produk</h3>
+                <p>
+                  Nama produk min. 40 karakter dengan memasukkan merek, jenis produk, warna, bahan, atau tipe.<br><br>
+                  Disarankan untuk tidak menggunakan huruf kapital berlebih, memasukkan lebih dari 1 merek, dan kata-kata
+                  promosi.<br><br>
+                </p>
+              </label>
+              <!-- KOLOM 2 -->
+              <label class="form col-md-7 offset-md-1">
+                <div class="namaproduk"><br>
+                  <div class="mb-3">
+                    <input type="text" class="form-control" id="formGroupExampleInput"
+                      placeholder="Contoh : Sepatu(Jenis/Kategori Produk) + Merek + Baru(Kondisi Produk)">
+                    <label for="formGroupExampleInput" class="form-label">Tips: Jenis Produk + Merek Produk + Kondisi Produk</label>
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div class="row">
+              <label class="col-md-3  offset-1">
+                <h3 class="text-judul">Kategori</h3>
+                <p>
+                  Pilih kategori yang sesuai karena biaya layanan akan tergantung pada kategori. Jika pemilihan kategori
+                  kurang sesuai, maka kategori akan diubah oleh LelangKu<br>
+                </p>
+              </label>
+              <!-- KOLOM 2 -->
+              <label class="form col-md-7 offset-md-1">
+                <div class="namaproduk"><br>
+                  <select class="form-select" aria-label="Default select example">
+                    <option selected>Pilih Kategori</option>
+                    <option value="1">Rumah Tangga</option>
+                    <option value="2">Buku</option>
+                    <option value="3">Fashion</option>
+                    <option value="4">Elektronik</option>
+                    <option value="5">Olahraga</option>
+                  </select>
+                </div>
+              </label>
+            </div>
+        </div>
+  
+        <!-- Kontainer 2 -->
+  
+        <div class="col-12 shadow p-3 mb-5 bg-body rounded">
+          <form>
+            <h3 class="text-judul  offset-1">Detail Produk</h3>
+  
+            <!-- KOLOM 1 -->
+            <div class="row">
+              <label class="col-md-3  offset-1">
+                <h3 class="text-judul">Kondisi</h3><br>
+              </label>
+              <!-- KOLOM 2 -->
+              <label class="form col-md-7 offset-md-1">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                  <label class="form-check-label" for="inlineRadio1">Baru</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                  <label class="form-check-label" for="inlineRadio2">Bekas</label>
+                </div>
+              </label>
+            </div>
+            <div class="row">
+              <label class="col-md-3  offset-1">
+                <h3 class="text-judul">Deskripsi Produk</h3>
+                <p>
+                  Pastikan deskripsi produk memuat penjelasan detail terkait produkmu agar pembeli mudah mengerti dan
+                  menemukan produkmu.<br><br>
+                  Disarankan untuk tidak memasukkan info nomor HP, e-mail, dsb. ke dalam deskripsi produk untuk melindungi
+                  data pribadimu.
+                </p>
+              </label>
+              <!-- KOLOM 2 -->
+              <label class="form col-md-7 offset-md-1">
+                <div class="namaproduk"><br>
+                  <div class="mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <label for="exampleFormControlTextarea1" class="form-label">Tulis deskripsi produkmu min. 260 karakter
+                      agar pembeli semakin mudah mengerti.</label>
+                  </div>
+                </div>
+              </label>
+            </div>
+        </div>
+  
+        <!-- Kontainer 3 -->
+  
+        <div class="col-12 shadow p-3 mb-5 bg-body rounded">
+          <form>
+            <h3 class="text-judul  offset-1"><br></h3>
+  
+            <!-- KOLOM 1 -->
+            <div class="row">
+              <label class="col-md-3  offset-1">
+                <h3 class="text-judul">Harga Produk</h3><br>
+              </label>
+              <!-- KOLOM 2 -->
+              <label class="form col-md-7 offset-md-1">
+                <div class="mb-3">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">IDR</span>
+                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div class="row">
+              <label class="col-md-3  offset-1">
+                <h3 class="text-judul">Durasi</h3><br>
+              </label>
+              <!-- KOLOM 2 -->
+              <label class="form col-md-7 offset-md-1">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                  <label class="form-check-label" for="inlineRadio1">3 Hari</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                  <label class="form-check-label" for="inlineRadio2">7 Hari</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                  <label class="form-check-label" for="inlineRadio3">14 Hari</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4">
+                  <label class="form-check-label" for="inlineRadio4">21 Hari</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="option5">
+                  <label class="form-check-label" for="inlineRadio5">28 Hari</label>
+                </div>
+              </label>
+            </div>
+        </div>
+  
+        </form>
+      </div>
+  
+      <!-- Button -->
+      <div class="col-10 p-0 mb-5 bg-body rounded offset-md-1">
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <button type="button" class="btn btn-outline-secondary btn-lg" style="width: 190px;">Batal</button>
+          <button type="button" class="btn btn-primary btn-lg" style="width: 190px;">Simpan</button>
+        </div>
+      </div>
+  
+  
+      </div> <!-- PENUTUP CONTAINER -->
+
+    <%- include ../../partials/client/footer.ejs %>
+
+    <script src="javascripts/js.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
