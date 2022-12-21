@@ -19,17 +19,22 @@ let itemSchema = mongoose.Schema({
   },
   price: {
     type: Number,
-    default: 0,
     require: [true, 'Harga awal harus diisi']
   },
-  floatingPrice: {
+  bidCount: {
     type: Number,
-    default: 0,
+    default: 0
   },
   post: {
     type: String,
     enum: ['Y', 'N'],
     default: 'Y',
+    require: true
+  },
+  condition: {
+    type: String,
+    enum: ['Baru', 'Bekas'],
+    default: 'Baru',
     require: true
   },
   timeLimit: {
@@ -46,6 +51,7 @@ let itemSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
+
 
 }, { timestamps: true })
 

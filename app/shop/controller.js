@@ -1,19 +1,15 @@
 const User = require('../user/model')
-const Category = require('../Category/model')
 const Item = require('../item/model')
-
-
+const multer = require('multer')
+const os = require('os')
 module.exports={
-    index: async(req, res)=>{
+    viewShop: async(req, res)=>{
         try {
-            const alertMessage = req.flash("alertMessage")
-            const alertStatus = req.flash("alertStatus")
-            const alert = {message:alertMessage, status:alertStatus}
             const user = await User.findOne({_id: req.session.user.id})
-            const category = await Category.find()
-            //let category = await Category.find({})
-            const item =  await Item.find().populate('seller')
-            res.render('client/landingpage/index', {
+            let item = await Item.find(
+                {seller: req.session.user.id}
+            )
+            res.render('client/itemToko/index',{
                 id: req.session.user.id,
                 name : user.name,
                 email: user.email,
@@ -26,12 +22,12 @@ module.exports={
                 postalCode: user.postalCode,
                 fullAddr: user.fullAddr,
                 image: user.image,
-                category,
-                item,
-                alert
+                item
             })
         } catch (err) {
-            console.log(err)
+            res.status(500).json({
+                message: err.message
+            })
         }
-    }
+    },
 }

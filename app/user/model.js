@@ -33,11 +33,6 @@ let userSchema = mongoose.Schema({
     enum: ['Y', 'N'],
     default: 'N'
   },
-  status: {
-    type: String,
-    enum: ['Y', 'N'],
-    default: 'Y'
-  },
   image: {type : String},
   phoneNumber: {
     type: String,

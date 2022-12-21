@@ -6,10 +6,15 @@ const multer = require('multer')
 const os = require('os')
 module.exports={
     index: async(req, res)=>{
+        const alertMessage = req.flash("alertMessage")
+        const alertStatus = req.flash("alertStatus")
+        const alert = {message:alertMessage, status:alertStatus}
         User.findOne({_id: req.session.user.id}, (err, result) => {
             try {
                 res.render('client/UserProfile/index', {
+                    id:req.session.user.id,
                     title: "User",
+                    username : result.username,
                     name : result.name,
                     email: result.email,
                     phoneNumber: result.phoneNumber,
@@ -21,6 +26,7 @@ module.exports={
                     fullAddr: result.fullAddr,
                     balance: result.balance,
                     image: result.image,
+                    alert
                 })
             } catch (err) {
                 console.log(err)
@@ -51,19 +57,22 @@ module.exports={
 
             if(req.file){
                 console.log(payload)
-                const image = req.file.path
+                const image = req.file.path.split('\\').slice(1).join('\\');
                 console.log(image)
                 User.findOneAndUpdate({
                     _id: req.session.user.id
                 }, {payload},{image:image})
             }else{
-                console.log(req.session.user.id)
                 await User.findOneAndUpdate({
                     _id: req.session.user.id
                 }, payload,{new: true})
             }
+            req.flash('alertMessage', "Profile berhasil diperbaharui")
+            req.flash('alertStatus', "success")
             res.redirect('/user')
         } catch (err) {
+            req.flash('alertMessage', err.message)
+            req.flash('alertStatus', "danger")
             res.redirect('/user')
         }
     },
@@ -74,7 +83,9 @@ module.exports={
                 const alertStatus = req.flash("alertStatus")
                 const alert = {message:alertMessage, status:alertStatus}
                 res.render('client/TopUp/index', {
+                    id: req.session.user.id,
                     title: "TopUp",
+                    username : result.username,
                     name : result.name,
                     email: result.email,
                     phoneNumber: result.phoneNumber,
