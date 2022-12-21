@@ -43,34 +43,6 @@
 						<input type="number" name="addbalance" class="form-control">
 					</label>
 
-                    <div class="pilihan1">
-                    <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off">
-                    <label class="btn btn-primary w-25" for="option1">50rb</label>
-
-                    <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
-                    <label class="btn btn-primary w-25" for="option2">100rb</label>
-
-                    <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off">
-                    <label class="btn btn-primary w-25" for="option3">200rb</label>
-
-                    </div>
-
-                    <h6> </h6>
-
-                    <!---->
-                    <div class="pilihan2">
-                        <input type="radio" class="btn-check" name="options" id="option4" autocomplete="off">
-                        <label class="btn btn-primary w-25" for="option4">500rb</label>
-
-                        <input type="radio" class="btn-check" name="options" id="option5" autocomplete="off">
-                        <label class="btn btn-primary w-25" for="option5">700rb</label>
-    
-                        <input type="radio" class="btn-check" name="options" id="option6" autocomplete="off">
-                        <label class="btn btn-primary w-25" for="option6">1jt</label>
-    
-                        </div>
-                    <!---->
-
 					<h3 class="text-judul mt-5">Metode Pembayaran</h3>
 					<% for(var i=0; i<bank.length;i++){ %> 
 						<label class="w-100 mb-3 border rounded p-2">
@@ -83,25 +55,6 @@
 				
 				<!-- KOLOM 2 -->
 				<div class="col-md-4 offset-md-1">
-				<div class="card sticky-top">
-				  <div class="card-header bg-white">
-				    <h3 class="text-judul">Detail Top Up</h3>
-				  </div>
-				  <div class="card-body">
-				    <div class="row mt-2 mb-2">
-				    	<div class="col-md"><small>Sub Total</small></div>
-				    	<div class="col-md">IDR 50.000</div>
-				    </div>
-				    <div class="row mt-2 mb-2">
-						<div class="col-md"><small>Biaya Admin</small></div>
-				    	<div class="col-md">IDR 2.000</div>
-				    </div>
-				    <div class="row mt-2 mb-2">
-				    	<div class="col-md"><small>Total</small></div>
-				    	<div class="col-md">IDR 52.000</div>
-				    </div>
-				   </div>
-				</div>
 				  <div class="card-footer">
 				    <button type="submit" class="btn btn-primary w-100">Bayar</button>
 				  </div>
