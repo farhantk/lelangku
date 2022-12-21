@@ -7,7 +7,7 @@ const { isLoginUser } = require('../middleware/auth')
 router.get('/landingpage', isLoginUser, landingPage);
 router.get('/:id', isLoginUser, detailItem);
 router.put('/:id', isLoginUser, bidItem);
-router.post('/', isLoginUser, createItem);
+
 
 
 module.exports = router;

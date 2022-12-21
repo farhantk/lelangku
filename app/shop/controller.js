@@ -30,4 +30,44 @@ module.exports={
             })
         }
     },
+    viewCreateItem: async(req,res)=>{
+        try {
+            const user = await User.findOne({_id: req.session.user.id})
+            res.render('client/addItem/index',{
+                id: req.session.user.id,
+                name : user.name,
+                email: user.email,
+                balance: user.balance,
+            })
+        } catch (err) {
+            console.log(err)
+        }
+    },
+    createItem: async(req, res)=>{
+        try {
+            const {name, desc, category, price, limit, condition} = req.body
+            const seller = req.session.user.id
+            const image = req.file.path.split('\\').slice(1).join('\\');
+            const now = new Date();
+            if(limit=='3 hari'){
+                timeLimit = date.addSeconds(now, 3*86400);
+            }else if(limit=='7 hari'){
+                timeLimit = date.addSeconds(now, 7*86400);
+            }else if(limit=='14 hari'){
+                timeLimit = date.addSeconds(now, 14*86400);
+            }else if(limit=='21 hari'){
+                timeLimit = date.addSeconds(now, 21*86400);
+            }else{
+                timeLimit = date.addSeconds(now, 28*86400);
+            }
+            
+            let item = new Item({ name, desc, category, price, timeLimit, condition, seller, image:image})
+            await item.save()
+            res.status(201).json({
+                data: item
+            })
+        } catch (err) {
+            console.log(err)
+        }
+    },
 }
