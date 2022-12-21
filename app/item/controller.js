@@ -1,6 +1,7 @@
 const Item = require('./model')
 const User = require('../user/model')
 const multer = require('multer')
+const date = require('date-and-time');
 const os = require('os')
 module.exports={
     landingPage: async(req, res)=>{
@@ -30,6 +31,20 @@ module.exports={
                 _id:id
             }).populate('seller')
             const item_2 =  await Item.find()
+            let limit = item.timeLimit
+            const today = new Date();
+            let reameningTime = date.subtract(limit, today).toHours();
+            let timeConv = ""
+            if(date.subtract(limit, today).toDays()>=1){
+                reameningTime = date.subtract(limit, today).toDays();
+                timeConv = Math.floor(reameningTime)+" Hari lagi"
+            }else if(date.subtract(limit, today).toDays()<1){
+                reameningTime = date.subtract(limit, today).toHours();
+                timeConv = Math.floor(reameningTime)+" Jam lagi"
+            }else if(date.subtract(limit, today).toHours()<1){
+                reameningTime = date.subtract(limit, today).toMinutes();
+                timeConv = Math.floor(reameningTime)+" Menit lagi"
+            }
             res.render('client/detailItem/index',{
                 id: req.session.user.id,
                 title:"detail item",
@@ -40,7 +55,8 @@ module.exports={
                 price: item.price,
                 item,
                 item_2,
-                alert
+                alert,
+                date:timeConv
             })
         } catch (err) {
             res.status(500).json({
@@ -50,11 +66,22 @@ module.exports={
     },
     createItem: async(req, res)=>{
         try {
-            const {name, desc, category, price, timeLimit, condition} = req.body
+            const {name, desc, category, price, limit, condition} = req.body
             const seller = req.session.user.id
             const image = req.file.path.split('\\').slice(1).join('\\');
-            console.log(">>>", typeof(image))
-            console.log(image)
+            const now = new Date();
+            if(limit=='3 hari'){
+                timeLimit = date.addSeconds(now, 3*86400);
+            }else if(limit=='7 hari'){
+                timeLimit = date.addSeconds(now, 7*86400);
+            }else if(limit=='14 hari'){
+                timeLimit = date.addSeconds(now, 14*86400);
+            }else if(limit=='21 hari'){
+                timeLimit = date.addSeconds(now, 21*86400);
+            }else{
+                timeLimit = date.addSeconds(now, 28*86400);
+            }
+            
             let item = new Item({ name, desc, category, price, timeLimit, condition, seller, image:image})
             await item.save()
             res.status(201).json({
@@ -87,7 +114,6 @@ module.exports={
                 req.flash('alertStatus', "danger")
                 res.redirect('/')
             }
-            
         } catch (err) {
             req.flash('alertMessage', err.message)
             req.flash('alertStatus', "danger")

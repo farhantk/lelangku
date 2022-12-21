@@ -12,12 +12,14 @@ const cors = require('cors')
 const redis = require('redis')
 let RedisStore = require('connect-redis')(session)
 let redisClient = redis.createClient()
+const date = require('date-and-time');
 // USERS
 var authRouter = require('./app/auth/router');
 var landingPageRouter = require('./app/landingpage/router');
 var userRouter = require('./app/user/router');
 var itemRouter = require('./app/item/router');
 var shopRouter = require('./app/shop/router');
+var transactionRouter = require('./app/transaction/router');
 
 // ADMIN
 var adminRouter = require('./app/admin/router');
@@ -83,6 +85,7 @@ app.use('/admin/bank', bankRouter);
 app.use('/', authRouter);
 app.use('/', landingPageRouter);
 app.use('/user', userRouter);
+app.use('/user/transaction', transactionRouter);
 app.use('/', itemRouter)
 app.use('/shop', shopRouter)
 

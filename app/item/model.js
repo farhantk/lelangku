@@ -37,9 +37,14 @@ let itemSchema = mongoose.Schema({
     default: 'Baru',
     require: true
   },
-  timeLimit: {
+  status: {
     type: String,
-    enum: ['3 hari', '7 hari', '14 hari', '21 hari', '28 hari'],
+    enum: ['Bid', 'Selesai', 'Mengirim'],
+    default: 'Bid',
+    require: true
+  },
+  timeLimit: {
+    type: Date,
     require: [true, 'batas waktu harus diisi']
   },
   image: {type : String},
