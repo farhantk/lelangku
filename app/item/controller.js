@@ -30,7 +30,7 @@ module.exports={
             let item = await Item.findOne({
                 _id:id
             }).populate('seller')
-            const item_2 =  await Item.find()
+            const item_2 =  await Item.find({post:"Y"})
             let limit = item.timeLimit
             const today = new Date();
             let reameningTime = date.subtract(limit, today).toHours();
@@ -45,9 +45,16 @@ module.exports={
                 reameningTime = date.subtract(limit, today).toMinutes();
                 timeConv = Math.floor(reameningTime)+" Menit lagi"
             }
+            if(limit < today){
+                console.log("first")
+                timeConv = " Selesai"
+                await User.findOneAndUpdate({
+                    _id: req.session.user.id
+                }, {post:"N", status:"Mengirim"})
+            }
             res.render('client/detailItem/index',{
                 id: req.session.user.id,
-                title:"detail item",
+                title:item.name,
                 name:user.name,
                 balance: user.balance,
                 itemName: item.name,
