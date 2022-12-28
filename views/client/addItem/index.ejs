@@ -4,6 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>LelangKu - Your Best Auction Place</title>
+    <!--Logo bar Lelangku-->
+  <link rel="stylesheet" href="/https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/adminlte/plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/adminlte/dist/css/adminlte.min.css">
+  <link rel="icon" href="/images/Lelangku_logo.png" type="image/x-icon">
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -26,6 +33,7 @@
       <div class="row">
         <div class="col-12"><br>
           <h2 class="text-judul-halaman">Add Item</h2>
+          <%- include ../../partials/message.ejs %>
         </div>
       </div>
   
@@ -100,7 +108,6 @@
           <label class="form col-md-7 offset-md-1">
             <div class="namaproduk"><br>
               <select class="form-select" aria-label="Default select example" name="category">
-                <option selected>Pilih Kategori</option>
                 <% for(var i=0; i<categoryModel.length;i++){ %> 
                   <option value=<%= categoryModel[i]._id %>><%= categoryModel[i].name %></option>
                 <% } %>
