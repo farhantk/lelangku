@@ -45,33 +45,34 @@
         />
       </div>
 
+      <% for(var i=0; i<item.length;i++){ %>
       <div class="card-progressitem">
         <div class="row">
-          <div class="col-12 mt-0">
-            <div class="card-horizontal">
-              <div class="img-square-wrapper">
-                <img src="../assets/images/shoe-2.jpg" />
-              </div>
-              <div class="card-body">
-                <h4 class="card-title fw-bold">Sepatu Super 2</h4>
-                <div class="price">
-                  <span>Rp.4.500.000</span>
+            <div class="col-12 mt-0">
+              <div class="card-horizontal">
+                <div class="img-square-wrapper">
+                  <img src="../<%= item[i].image %>" />
                 </div>
-                <h6 style="font-style: italic">Dikemas</h6>
-                <div class="bid-time">
-                  <i class="bx bx-time"></i>
-                  <span>Selesai</span>
-                </div>
-                <div class="text-info-dan-detail">
-                  <h4 class="status-lelang-kalah fw-medium">
-                    Anda bukan pelelang tertinggi
-                  </h4>
+                <div class="card-body">
+                  <h4 class="card-title fw-bold"><%= item[i].name %></h4></br>
+                  <div class="price">
+                    <span>Rp. <%= item[i].price %></span>
+                  </div>
+                  <div class="bid-time">
+                    <i class="bx bx-time"></i>
+                    <span><%= item[i].status %></span>
+                  </div>
+                  <div class="text-info-dan-detail">
+                    <h4 class="status-lelang-kalah fw-medium">
+                      Anda pelelang tertinggi
+                    </h4>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      <% } %>
     </div>
 
     <%- include ../../partials/client/footer.ejs %>

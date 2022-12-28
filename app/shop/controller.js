@@ -1,6 +1,7 @@
 const User = require('../user/model')
 const Item = require('../item/model')
 const Category = require('../Category/model')
+const date = require('date-and-time');
 const multer = require('multer')
 const os = require('os')
 module.exports={
@@ -53,6 +54,7 @@ module.exports={
             
             const {name, desc, category, price, limit, condition} = req.body
             const seller = req.session.user.id
+            console.log(req.files)
             const image = req.file.path.split('\\').slice(1).join('\\');
             const now = new Date();
             if(limit=='3 hari'){

@@ -10,6 +10,7 @@ module.exports={
             const item = await Item.find({buyyer:req.session.user.id})
             res.render('client/transaction/index', {
                 user,
+                item,
                 id:req.session.user.id,
                 title: "Transaction",
                 username : user.username,
