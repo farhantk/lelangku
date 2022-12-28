@@ -7,8 +7,9 @@ module.exports={
     viewTransaction: async(req,res)=>{
         try {
             const user = await User.findOne({_id: req.session.user.id})
-            const item = await Item.find()
+            const item = await Item.find({buyyer:req.session.user.id})
             res.render('client/transaction/index', {
+                user,
                 id:req.session.user.id,
                 title: "Transaction",
                 username : user.username,

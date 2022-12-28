@@ -33,7 +33,10 @@ let userSchema = mongoose.Schema({
     enum: ['Y', 'N'],
     default: 'N'
   },
-  image: {type : String},
+  image: {
+    type : String,
+    default: "images/userIcon.png"
+  },
   phoneNumber: {
     type: String,
     require: [true, 'nomor telpon harus diisi'],

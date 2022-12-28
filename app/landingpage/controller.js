@@ -14,6 +14,7 @@ module.exports={
             //let category = await Category.find({})
             const item =  await Item.find({post:"Y"}).populate('seller')
             res.render('client/landingpage/index', {
+                user,
                 id: req.session.user.id,
                 name : user.name,
                 email: user.email,

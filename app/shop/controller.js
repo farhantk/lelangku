@@ -11,6 +11,7 @@ module.exports={
                 {seller: req.session.user.id}
             )
             res.render('client/itemToko/index',{
+                user,
                 id: req.session.user.id,
                 name : user.name,
                 email: user.email,
@@ -36,6 +37,7 @@ module.exports={
             const categoryModel = await Category.find()
             const user = await User.findOne({_id: req.session.user.id})
             res.render('client/addItem/index',{
+                user,
                 id: req.session.user.id,
                 name : user.name,
                 email: user.email,

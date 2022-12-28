@@ -10,9 +10,11 @@ module.exports={
         const alertMessage = req.flash("alertMessage")
         const alertStatus = req.flash("alertStatus")
         const alert = {message:alertMessage, status:alertStatus}
+        const user = await User.findOne({_id: req.session.user.id})
         User.findOne({_id: req.session.user.id}, (err, result) => {
             try {
                 res.render('client/UserProfile/index', {
+                    user,
                     id:req.session.user.id,
                     title: "User",
                     username : result.username,
@@ -55,18 +57,17 @@ module.exports={
             if(ward.length) payload.ward = ward
             if(postalCode.length) payload.postalCode = postalCode
             if(fullAddr.length) payload.fullAddr = fullAddr
-            console.log(req.file)
             if(req.file){
                 console.log(test)
-                //const image = req.file.path.split('\\').slice(1).join('\\');
+                const image = req.file.path.split('\\').slice(1).join('\\');
                 User.findOneAndUpdate({
                     _id: req.session.user.id
-                }, payload, {image:image})
+                }, {payload}, {image:image})
             }else{
-                const image = req.file.path.split('\\').slice(1).join('\\');
+                //const image = req.file.path.split('\\').slice(1).join('\\');
                 await User.findOneAndUpdate({
                     _id: req.session.user.id
-                }, payload,{image:image})
+                },{payload})
             }
             req.flash('alertMessage', "Profile berhasil diperbaharui")
             req.flash('alertStatus', "success")
@@ -86,6 +87,7 @@ module.exports={
             const user = await User.findOne({_id: req.session.user.id})
             const bank = await Bank.find()
             res.render('client/TopUp/index', {
+                user,
                 id: req.session.user.id,
                 title: "TopUp",
                 username : user.username,

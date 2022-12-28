@@ -26,13 +26,13 @@
         <div class="col-12 mt-0">
           <div class="card-horizontal">
             <div class="img-square-wrapper-toko">
-              <img src="assets/images/shoe-1.jpg" />
+              <img src="../<%= user.image %>" />
             </div>
             <div class="card-body card-body-toko">
-              <p class="card-title fw-bold">Monkey24</p>
+              <p class="card-title fw-bold"><%= user.username %> </p>
               <div class="lokasi-toko">
                 <i class="bx bx-map"></i>
-                <span>Bandung</span>
+                <span><%= user.city %></span>
               </div>
               <div class="rating">
                 <i class="bx bxs-star" style="color: #ffc400"></i>
