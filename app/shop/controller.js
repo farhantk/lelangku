@@ -1,15 +1,27 @@
 const User = require('../user/model')
 const Item = require('../item/model')
 const Category = require('../Category/model')
+const Expedition = require('../expedition/model')
+const Invoice = require('../invoice/model')
 const date = require('date-and-time');
 const multer = require('multer')
 const os = require('os')
 module.exports={
     viewShop: async(req, res)=>{
         try {
+            const expedition = await Expedition.find()
             const user = await User.findOne({_id: req.session.user.id})
             let item = await Item.find(
-                {seller: req.session.user.id}
+                {seller: req.session.user.id, post:"Y", status:"Bid"}
+            )
+            let item2 = await Item.find(
+                {seller: req.session.user.id, post:"N", status:"Bid"}
+            ).populate('buyyer')
+            let item3 = await Item.find(
+                {seller: req.session.user.id, post:"N", status:"Mengirim"}
+            )
+            let item4 = await Item.find(
+                {seller: req.session.user.id, post:"N", status:"Selesai"}
             )
             res.render('client/itemToko/index',{
                 user,
@@ -25,7 +37,11 @@ module.exports={
                 postalCode: user.postalCode,
                 fullAddr: user.fullAddr,
                 image: user.image,
-                item
+                item,
+                item2,
+                item3,
+                item4,
+                expedition
             })
         } catch (err) {
             res.status(500).json({
@@ -49,6 +65,21 @@ module.exports={
                 categoryModel,
                 alert
             })
+        } catch (err) {
+            console.log(err)
+        }
+    },
+    sendItem: async(req, res)=>{
+        try {
+            const {item} = req.params
+            const {expedition, receiptNumber} = req.body
+            console.log(">>>>>",item)
+            let receipt = await Invoice({
+                expedition:expedition, item, receiptNumber
+            })
+            await receipt.save()
+            await Item.findOneAndUpdate({_id:item},{status:"Mengirim"})
+            res.redirect('/')
         } catch (err) {
             console.log(err)
         }
