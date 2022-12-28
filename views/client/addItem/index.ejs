@@ -30,8 +30,8 @@
       </div>
   
   
-      <div class="row">
-        <form action="/shop/csellitem" method="POST">
+  <form action="/shop/sellitem" method="POST" enctype="multipart/form-data">
+    <div class="row">
           <!-- Kontainer 1 -->
   
           <!-- KOLOM 1 -->
@@ -53,45 +53,7 @@
               <!-- KOLOM 1 -->
   
               <label class="form col-md-7 offset-md-1 align-baseline">
-                <div class="grid">
-                  <div class="form-element">
-                    <input type="file" id="file-1" accept="image/*" name="image">
-                    <label for="file-1" id="file-1-preview">
-                      <img src="https://bit.ly/3ubuq5o" alt="">
-                      <div>
-                        <span>+</span>
-                      </div>
-                    </label>
-                  </div>
-                  <div class="form-element">
-                    <input type="file" id="file-2" accept="image/*">
-                    <label for="file-2" id="file-2-preview">
-                      <img src="https://bit.ly/3ubuq5o" alt="">
-                      <div>
-                        <span>+</span>
-                      </div>
-                    </label>
-                  </div>
-                  <div class="form-element">
-                    <input type="file" id="file-3" accept="image/*">
-                    <label for="file-3" id="file-3-preview">
-                      <img src="https://bit.ly/3ubuq5o" alt="">
-                      <div>
-                        <span>+</span>
-                      </div>
-                    </label>
-                  </div>
-                  <div class="form-element">
-                    <input type="file" id="file-4" accept="image/*">
-                    <label for="file-4" id="file-4-preview">
-                      <img src="https://bit.ly/3ubuq5o" alt="">
-                      <div>
-                        <span>+</span>
-                      </div>
-                    </label>
-                  </div>
-  
-                </div>
+                <input type="file" name="image" accept="image/*">
               </label>
             </div>
           </div>
@@ -140,7 +102,7 @@
               <select class="form-select" aria-label="Default select example" name="category">
                 <option selected>Pilih Kategori</option>
                 <% for(var i=0; i<categoryModel.length;i++){ %> 
-                  <option value="1"><%= categoryModel[i].name %></option>
+                  <option value=<%= categoryModel[i]._id %>><%= categoryModel[i].name %></option>
                 <% } %>
               </select>
             </div>
@@ -184,7 +146,7 @@
           <label class="form col-md-7 offset-md-1">
             <div class="namaproduk"><br>
               <div class="mb-3">
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="desc">
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="desc"></textarea>
                 <label for="exampleFormControlTextarea1" class="form-label">Tulis deskripsi produkmu min. 260 karakter
                   agar pembeli semakin mudah mengerti.</label>
               </div>
@@ -242,19 +204,16 @@
           </label>
         </div>
       </div>
-    </div>
   
-    <!-- Button -->
-    <div class="col-10 p-0 mb-5 bg-body rounded offset-md-1">
-      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <button type="button" class="btn btn-outline-secondary btn-lg" style="width: 190px;">Batal</button>
-        <button type="button" class="btn btn-primary btn-lg" style="width: 190px;">Simpan</button>
+      <!-- Button -->
+      <div class="col-10 p-0 mb-5 bg-body rounded offset-md-1">
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <button type="button" class="btn btn-outline-secondary btn-lg" style="width: 190px;">Batal</button>
+          <button type="submit" class="btn btn-primary btn-lg" style="width: 190px;">Simpan</button>
+        </div>
       </div>
-    </div>
-  
-  
     </div> <!-- PENUTUP CONTAINER -->
-    </form>
+  </form>
 
     <%- include ../../partials/client/footer.ejs %>
 
