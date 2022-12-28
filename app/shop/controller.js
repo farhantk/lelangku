@@ -12,10 +12,11 @@ module.exports={
             const expedition = await Expedition.find()
             const user = await User.findOne({_id: req.session.user.id})
             let item = await Item.find(
-                {seller: req.session.user.id, post:"Y", status:"Bid"}
+                {seller: req.session.user.id, post:"Y", status:"Bid",
+                $or: [ { seller: req.session.user.id }, { post:"N" }, { status:"Bid" }, { buyyer:{ $eq: null } }]}
             )
             let item2 = await Item.find(
-                {seller: req.session.user.id, post:"N", status:"Bid"}
+                {seller: req.session.user.id, post:"N", status:"Bid", buyyer:{ $ne: null }}
             ).populate('buyyer')
             let item3 = await Item.find(
                 {seller: req.session.user.id, post:"N", status:"Mengirim"}
