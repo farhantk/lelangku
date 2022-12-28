@@ -718,13 +718,17 @@ footer {
 }
 
 .img-square-wrapper-toko {
-  max-width: 100px;
-  max-height: 100px;
+  display: inline-block;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 100px;
+  height: 100px;
 }
 
 .img-square-wrapper-toko img {
   width: 100%;
-  min-height: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .card-body-toko {
