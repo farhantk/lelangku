@@ -55,18 +55,18 @@ module.exports={
             if(ward.length) payload.ward = ward
             if(postalCode.length) payload.postalCode = postalCode
             if(fullAddr.length) payload.fullAddr = fullAddr
-
+            console.log(req.file)
             if(req.file){
-                console.log(payload)
-                const image = req.file.path.split('\\').slice(1).join('\\');
-                console.log(image)
+                console.log(test)
+                //const image = req.file.path.split('\\').slice(1).join('\\');
                 User.findOneAndUpdate({
                     _id: req.session.user.id
-                }, {payload},{image:image})
+                }, payload, {image:image})
             }else{
+                const image = req.file.path.split('\\').slice(1).join('\\');
                 await User.findOneAndUpdate({
                     _id: req.session.user.id
-                }, payload,{new: true})
+                }, payload,{image:image})
             }
             req.flash('alertMessage', "Profile berhasil diperbaharui")
             req.flash('alertStatus', "success")

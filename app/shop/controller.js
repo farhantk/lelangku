@@ -1,5 +1,6 @@
 const User = require('../user/model')
 const Item = require('../item/model')
+const Category = require('../Category/model')
 const multer = require('multer')
 const os = require('os')
 module.exports={
@@ -32,12 +33,14 @@ module.exports={
     },
     viewCreateItem: async(req,res)=>{
         try {
+            const categoryModel = await Category.find()
             const user = await User.findOne({_id: req.session.user.id})
             res.render('client/addItem/index',{
                 id: req.session.user.id,
                 name : user.name,
                 email: user.email,
                 balance: user.balance,
+                categoryModel
             })
         } catch (err) {
             console.log(err)
@@ -45,6 +48,7 @@ module.exports={
     },
     createItem: async(req, res)=>{
         try {
+            
             const {name, desc, category, price, limit, condition} = req.body
             const seller = req.session.user.id
             const image = req.file.path.split('\\').slice(1).join('\\');

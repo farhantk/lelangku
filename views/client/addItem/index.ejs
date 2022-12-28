@@ -30,7 +30,7 @@
   
   
       <div class="row">
-        <form>
+        <form action="/shop/csellitem" method="POST">
           <!-- Kontainer 1 -->
   
           <!-- KOLOM 1 -->
@@ -54,7 +54,7 @@
               <label class="form col-md-7 offset-md-1 align-baseline">
                 <div class="grid">
                   <div class="form-element">
-                    <input type="file" id="file-1" accept="image/*">
+                    <input type="file" id="file-1" accept="image/*" name="image">
                     <label for="file-1" id="file-1-preview">
                       <img src="https://bit.ly/3ubuq5o" alt="">
                       <div>
@@ -117,7 +117,7 @@
           <label class="form col-md-7 offset-md-1">
             <div class="namaproduk"><br>
               <div class="mb-3">
-                <input type="text" class="form-control" id="formGroupExampleInput"
+                <input type="text" class="form-control" id="formGroupExampleInput" name="name"
                   placeholder="Contoh : Sepatu(Jenis/Kategori Produk) + Merek + Baru(Kondisi Produk)">
                 <label for="formGroupExampleInput" class="form-label">Tips: Jenis Produk + Merek Produk + Kondisi
                   Produk</label>
@@ -136,13 +136,11 @@
           <!-- KOLOM 2 -->
           <label class="form col-md-7 offset-md-1">
             <div class="namaproduk"><br>
-              <select class="form-select" aria-label="Default select example">
+              <select class="form-select" aria-label="Default select example" name="category">
                 <option selected>Pilih Kategori</option>
-                <option value="1">Rumah Tangga</option>
-                <option value="2">Buku</option>
-                <option value="3">Fashion</option>
-                <option value="4">Elektronik</option>
-                <option value="5">Olahraga</option>
+                <% for(var i=0; i<categoryModel.length;i++){ %> 
+                  <option value="1"><%= categoryModel[i].name %></option>
+                <% } %>
               </select>
             </div>
           </label>
@@ -162,11 +160,11 @@
           <!-- KOLOM 2 -->
           <label class="form col-md-7 offset-md-1">
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+              <input class="form-check-input" type="radio" name="condition" id="inlineRadio1" value="Baru">
               <label class="form-check-label" for="inlineRadio1">Baru</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+              <input class="form-check-input" type="radio" name="condition" id="inlineRadio2" value="Bekas">
               <label class="form-check-label" for="inlineRadio2">Bekas</label>
             </div>
           </label>
@@ -185,7 +183,7 @@
           <label class="form col-md-7 offset-md-1">
             <div class="namaproduk"><br>
               <div class="mb-3">
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="desc">
                 <label for="exampleFormControlTextarea1" class="form-label">Tulis deskripsi produkmu min. 260 karakter
                   agar pembeli semakin mudah mengerti.</label>
               </div>
@@ -209,7 +207,7 @@
             <div class="mb-3">
               <div class="input-group mb-3">
                 <span class="input-group-text">IDR</span>
-                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                <input type="text" name="price" class="form-control" aria-label="Amount (to the nearest dollar)">
               </div>
             </div>
           </label>
@@ -221,23 +219,23 @@
           <!-- KOLOM 2 -->
           <label class="form col-md-7 offset-md-1">
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+              <input class="form-check-input" type="radio" name="limit" id="inlineRadio1" value="3 hari">
               <label class="form-check-label" for="inlineRadio1">3 Hari</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+              <input class="form-check-input" type="radio" name="limit" id="inlineRadio2" value="7 hari">
               <label class="form-check-label" for="inlineRadio2">7 Hari</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+              <input class="form-check-input" type="radio" name="limit" id="inlineRadio3" value="14 hari">
               <label class="form-check-label" for="inlineRadio3">14 Hari</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4">
+              <input class="form-check-input" type="radio" name="limit" id="inlineRadio4" value="21 hari">
               <label class="form-check-label" for="inlineRadio4">21 Hari</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="option5">
+              <input class="form-check-input" type="radio" name="limit" id="inlineRadio5" value="28 hari">
               <label class="form-check-label" for="inlineRadio5">28 Hari</label>
             </div>
           </label>
