@@ -53,6 +53,7 @@ module.exports={
                 }, {post:"N", status:"Mengirim"})
             }
             res.render('client/detailItem/index',{
+                user,
                 id: req.session.user.id,
                 title:item.name,
                 name:user.name,
