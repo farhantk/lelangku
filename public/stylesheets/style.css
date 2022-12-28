@@ -573,9 +573,14 @@ footer {
 .text-info-dan-detail a {
   text-align: right;
   position: absolute;
-  padding: 0 15px 15px 0;
   bottom: 0;
   right: 0;
+}
+
+.text-info-dan-detail .btn {
+  background-color: #004aad;
+  border-radius: 5px;
+  margin: 20px;
 }
 
 /* Bagian Top Up */
