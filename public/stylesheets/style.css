@@ -360,6 +360,20 @@
   padding: 10px;
 }
 
+.card-image {
+  display: inline-block;
+  overflow: hidden;
+  width: 300px;
+  height: 300px;
+}
+
+.card-image img {
+  margin-right: 20px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .card-image a {
   padding: 20px;
   display: flex;
@@ -761,6 +775,29 @@ footer {
 
 .wrap-button-toko {
   padding-top: 20px;
+}
+
+.card-kirim {
+  background-color: #fff;
+  position: relative;
+  width: 300px;
+  border: none;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  margin-left: 0px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 12px;
+}
+
+.button-tambah-item {
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.button-tambah-item .btn {
+  background-color: #004aad;
 }
 
 /* bagian add item */
