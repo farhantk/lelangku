@@ -90,10 +90,7 @@
             <div class="detail-item mt-3">
               <span class="">Berakhir pada</span>
             </div>
-            <span class="fw-bold">15 Desember 2022</span>
-            <div class="detail-item-waktu">
-              <span class="fw-bold">05:00</span>
-            </div>
+            <span class="fw-bold"><%= item[i].timeLimit %></span>
           </div>
         </div>
       <% } %>
@@ -130,12 +127,11 @@
               <span>Rp. <%= item2[i].price %></span>
             </div>
             <span class="alamat"
-            >Jl. Telekomunikasi. 1, Terusan Buahbatu - Bojongsoang, Telkom
-            University, Sukapura, Kec. Dayeuhkolot, Kabupaten Bandung, Jawa
-            Barat <%= item2[i].buyyer %></span
-            >
+            ><%= item2[i].buyyer.fullAddr %>, <%= item2[i].buyyer.ward %>, 
+            <%= item2[i].buyyer.district %>, <%= item2[i].buyyer.city %>, 
+            <%= item2[i].buyyer.province %> <%= item2[i].buyyer.postalCode %></span>
             
-              <form action="/shop/senditem/<%= item2[i]._id %>" method="POST">
+              <form action="/shop/<%= item2[i]._id %>" method="POST">
                 <div class="detail-item mt-2">
                   <span class="">Ekspedisi</span>
                   <select name="expedition" class="form-select" aria-label="Default select example">
@@ -144,7 +140,7 @@
                     <% } %>
                   </select>
                   <span class="">Nomor Resi</span>
-                  <input type="receiptNumber" class="form-control"
+                  <input name="receiptNumber" class="form-control"
                         placeholder="Masukkan nomor resi...">
                 </div>
                 <button type="submit" class="btn btn-primary btn-lg mt-3 align-items-center" style="width: 100%; background-color: #004aad;">Kirim</button>
@@ -165,7 +161,7 @@
       <div class="row">
         <% for(var i=0; i<item3.length;i++){ %>
           <div class="card-kirim">
-            <span class="percent"><%= item2[i].condition %></span>
+            <span class="percent"><%= item3[i].condition %></span>
             <div class="card-image">
               <a class="gambar-hover" href="#"
               ><img
@@ -180,10 +176,9 @@
               <span>Rp. <%= item3[i].price %></span>
             </div>
             <span class="alamat"
-            >Jl. Telekomunikasi. 1, Terusan Buahbatu - Bojongsoang, Telkom
-            University, Sukapura, Kec. Dayeuhkolot, Kabupaten Bandung, Jawa
-            Barat  </span
-            >
+            ><%= item3[i].buyyer.fullAddr %>, <%= item3[i].buyyer.ward %>, 
+            <%= item3[i].buyyer.district %>, <%= item3[i].buyyer.city %>, 
+            <%= item3[i].buyyer.province %> <%= item3[i].buyyer.postalCode%></span>
             </div>
         <% } %>
       </div>

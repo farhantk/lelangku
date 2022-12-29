@@ -5,7 +5,7 @@ let invoiceSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Item'
     },
-    exptedition: {
+    expedition: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Expedition'
     },

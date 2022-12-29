@@ -6,7 +6,7 @@ const { isLoginUser } = require('../middleware/auth')
 /* GET home page. */
 router.get('/sellitem', isLoginUser, viewCreateItem);
 router.post('/sellitem', isLoginUser, createItem);
-router.post('/senditem/:id', isLoginUser, sendItem);
+router.post('/:id', isLoginUser, sendItem);
 router.get('/:id', isLoginUser, viewShop);
 
 module.exports = router;

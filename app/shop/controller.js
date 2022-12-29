@@ -20,7 +20,7 @@ module.exports={
             ).populate('buyyer')
             let item3 = await Item.find(
                 {seller: req.session.user.id, post:"N", status:"Mengirim"}
-            )
+            ).populate('buyyer')
             let item4 = await Item.find(
                 {seller: req.session.user.id, post:"N", status:"Selesai"}
             )
@@ -72,14 +72,14 @@ module.exports={
     },
     sendItem: async(req, res)=>{
         try {
-            const {item} = req.params
+            const {id} = req.params
             const {expedition, receiptNumber} = req.body
-            console.log(">>>>>",item)
+            console.log(expedition)
             let receipt = await Invoice({
-                expedition:expedition, item, receiptNumber
+                expedition, item:id, receiptNumber
             })
             await receipt.save()
-            await Item.findOneAndUpdate({_id:item},{status:"Mengirim"})
+            await Item.findOneAndUpdate({_id:id},{status:"Mengirim"})
             res.redirect('/')
         } catch (err) {
             console.log(err)
