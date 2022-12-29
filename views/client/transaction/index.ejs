@@ -47,29 +47,31 @@
 
       <% for(var i=0; i<item.length;i++){ %>
         <% if(item[i].status=="Mengirim"){ %>
-          <div class="card-progressitem">
-            <div class="row">
-                <div class="col-12 mt-0">
-                  <div class="card-horizontal">
-                    <div class="img-square-wrapper">
-                      <img src="../<%= item[i].image %>" />
-                    </div>
-                    <div class="card-body">
-                      <h4 class="card-title fw-bold"><%= item[i].name %></h4></br>
-                      <div class="price">
-                        <span>Rp. <%= item[i].price %></span>
+          <form action="/user/transaction/<%= item[i]._id %>?_method=PUT" method="POST">
+            <div class="card-progressitem">
+              <div class="row">
+                  <div class="col-12 mt-0">
+                    <div class="card-horizontal">
+                      <div class="img-square-wrapper">
+                        <img src="../<%= item[i].image %>" />
                       </div>
-                      <div class="bid-time">
-                        <i class="bx bx-time"></i>
-                        <span><%= item[i].status %></span>
-                      </div>
-                        <a class="btn btn-primary" href="#">Selesai</a>  
+                      <div class="card-body">
+                        <h4 class="card-title fw-bold"><%= item[i].name %></h4></br>
+                        <div class="price">
+                          <span>Rp. <%= item[i].price %></span>
+                        </div>
+                        <div class="bid-time">
+                          <i class="bx bx-time"></i>
+                          <span><%= item[i].status %></span>
+                        </div>
+                          <button type="submit" class="btn btn-primary">Selesai</button>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+          </form>
         <% }else if(item[i].status=="Bid"){ %>
           <div class="card-progressitem">
             <div class="row">

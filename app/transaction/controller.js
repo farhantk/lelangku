@@ -20,5 +20,15 @@ module.exports={
         } catch (err) {
             console.log(err)
         }
+    },
+    finishItem: async(req, res)=>{
+        try {
+            const {id} = req.params
+            await Item.findOneAndUpdate({
+                _id:id},{status:"Selesai"})
+            res.redirect('/user/transaction')
+        } catch (err) {
+            console.log(err)
+        }
     }
 }
