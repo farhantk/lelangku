@@ -43,12 +43,18 @@ module.exports={
             if(payload.password.length > 8){
                 if(payload.username.length != 0){
                     if(payload.name.length != 0){
-                        let user = new User(payload)
-                        await user.save()
-                        delete user._doc.password
-                        req.flash('alertMessage', "Berhasil mendaftar, silahkan masuk")
-                        req.flash('alertStatus', "success")
-                        res.redirect('/signin')
+                        if(payload.email.length != 0){
+                            let user = new User(payload)
+                            await user.save()
+                            delete user._doc.password
+                            req.flash('alertMessage', "Berhasil mendaftar, silahkan masuk")
+                            req.flash('alertStatus', "success")
+                            res.redirect('/signin')
+                        }else{
+                            req.flash('alertMessage', "Email harus diisi")
+                            req.flash('alertStatus', "danger")
+                            res.redirect('/signup')
+                        }
                     }else{
                         req.flash('alertMessage', "Nama harus diisi")
                         req.flash('alertStatus', "danger")
@@ -79,24 +85,30 @@ module.exports={
             const user = await User.findOne({
                 email: email
             })
-            if(user) {
-                const checkPass = await bcrypt.compare(password, user.password)
-                if(checkPass){
-                    req.session.user = {
-                        id: user._id,
-                        email: user.email,
-                        username: user.username,
-                        balance: user.balance
+            if(email.length != ""){
+                if(user) {
+                    const checkPass = await bcrypt.compare(password, user.password)
+                    if(checkPass){
+                        req.session.user = {
+                            id: user._id,
+                            email: user.email,
+                            username: user.username,
+                            balance: user.balance
+                        }
+                        console.log(req.session.user)
+                        res.redirect('/')
+                    }else{
+                        req.flash('alertMessage', "Kata sandi salah")
+                        req.flash('alertStatus', "danger")
+                        res.redirect('/signin')
                     }
-                    console.log(req.session.user)
-                    res.redirect('/')
                 }else{
-                    req.flash('alertMessage', "Kata sandi salah")
+                    req.flash('alertMessage', "Email belum terdaftar")
                     req.flash('alertStatus', "danger")
                     res.redirect('/signin')
                 }
             }else{
-                req.flash('alertMessage', "Email belum terdaftar")
+                req.flash('alertMessage', "Email belum diisi")
                 req.flash('alertStatus', "danger")
                 res.redirect('/signin')
             }

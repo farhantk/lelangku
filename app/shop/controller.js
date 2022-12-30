@@ -90,12 +90,12 @@ module.exports={
             const {name, desc, category, price, limit, condition} = req.body
             const seller = req.session.user.id
             if(req.file){
-                if(name.length > 3){
-                    if(desc.length > 3){
+                if(name.length > 0){
+                    if(desc.length > 0){
                         if(category != ""){
                             if(price>0){
                                 if(limit == '3 hari'||limit == '7 hari'||limit == '14 hari'||limit == '21 hari'||limit == '28 hari'){
-                                    if(condition != ""){
+                                    if(condition == "Baru" || condition == "Bekas"){
                                         const image = req.file.path.split('\\').slice(1).join('\\');
                                         const now = new Date();
                                         if(limit=='3 hari'){
@@ -135,12 +135,12 @@ module.exports={
                             res.redirect("/shop/sellitem")
                         }
                     }else{
-                        req.flash('alertMessage', "jumlah karakter deskripsi terlalu pendek")
+                        req.flash('alertMessage', "Deskripsi barang hasur diisi")
                         req.flash('alertStatus', "danger")
                         res.redirect("/shop/sellitem")
                     }
                 }else{
-                    req.flash('alertMessage', "jumlah karakter nama terlalu pendek")
+                    req.flash('alertMessage', "Nama barang hasur diisi")
                     req.flash('alertStatus', "danger")
                     res.redirect("/shop/sellitem")
                 }

@@ -115,19 +115,25 @@ module.exports={
         var addbalance =  req.body
         const temp = parseInt(Object.values(addbalance))
         //const temp = parseInt(addbalance)
-        User.findOneAndUpdate({
-            _id: req.session.user.id
-        }, {$inc:{balance:temp}}, (err, result)=>{
-            try {
-                req.flash('alertMessage', "Topup berhasil dilakukan")
-                req.flash('alertStatus', "success")
-                res.redirect('/user/topup')
-                res.status(200).json({
-                    data:result
-                })
-            } catch (err) {
-                console.log(err)
-            }
-        })
+        if(temp > 0){
+            User.findOneAndUpdate({
+                _id: req.session.user.id
+            }, {$inc:{balance:temp}}, (err, result)=>{
+                try {
+                    req.flash('alertMessage', "Topup berhasil dilakukan")
+                    req.flash('alertStatus', "success")
+                    res.redirect('/user/topup')
+                    res.status(200).json({
+                        data:result
+                    })
+                } catch (err) {
+                    console.log(err)
+                }
+            })
+        }else{
+            req.flash('alertMessage', "Saldo harus diisi")
+            req.flash('alertStatus', "danger")
+            res.redirect('/user/topup')
+        }
     }
 }
