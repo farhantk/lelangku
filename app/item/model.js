@@ -10,8 +10,8 @@ let itemSchema = mongoose.Schema({
   desc: {
     type: String,
     require: [true, 'Deskripsi barang harus diisi'],
-    maxlength :[225, "panjang nama harus antara 3 - 225 karakter"],
-    minlength :[3, "panjang nama harus antara 3 - 225 karakter"]
+    maxlength :[260],
+    minlength :[3, "panjang deskripsi harus antara 3 - 225 karakter"]
   },
   category: {
     type: mongoose.Schema.Types.ObjectId,
