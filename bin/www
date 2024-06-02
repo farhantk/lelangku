@@ -26,8 +26,8 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
- db.on('error', function(err) {
-  console.log("connecttion error  : tidak bisa tersambung ke mongodb")
+db.on('error', function(err) {
+  console.log("connecttion error  : tidak bisa tersambung ke mongodb", err)
 })
 
 db.on('open', function(){
